@@ -12,9 +12,16 @@ protocol HomepageViewControllerDelegate: AnyObject {
 }
 
 final class HomepageViewController: UIViewController {
-
+    //MARK: - Property
+    private lazy var viewModel: HomepageViewModelDelegate = HomepageViewModel()
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        viewModel.view = self
+        viewModel.viewDidLoad()
     }
+}
+
+extension HomepageViewController: HomepageViewControllerDelegate {
+    
 }

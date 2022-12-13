@@ -9,11 +9,19 @@ import Foundation
 
 protocol HomepageViewModelDelegate {
     var view: HomepageViewControllerDelegate? { get set}
+    
+    func viewDidLoad()
 }
 
 
 final class HomepageViewModel: HomepageViewModelDelegate {
     //MARK: - Property
     weak var view: HomepageViewControllerDelegate?
+    
+    
+    //MARK: - Lifecycle
+    func viewDidLoad() {
+        
+    }
     
 }
