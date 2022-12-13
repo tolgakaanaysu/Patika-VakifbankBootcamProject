@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tFO-bd-yfn">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
@@ -8,23 +8,85 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Homepage View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomepageViewController" customModule="BootcampFinalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bnL-BD-rSZ">
+                                <rect key="frame" x="0.0" y="91" width="390" height="670"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3ZL-Rz-45O">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bnL-BD-rSZ" secondAttribute="bottom" id="87K-XQ-JHW"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bnL-BD-rSZ" secondAttribute="trailing" id="FaF-y3-61K"/>
+                            <constraint firstItem="bnL-BD-rSZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Pde-Zv-xCS"/>
+                            <constraint firstItem="bnL-BD-rSZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fm2-jz-Kdk"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Odl-tO-udk">
+                        <barButtonItem key="rightBarButtonItem" image="line.3.horizontal" catalog="system" id="p3Z-Kc-qgh"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="gameCollectionView" destination="bnL-BD-rSZ" id="Y6W-1O-VMa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="109" y="4"/>
+            <point key="canvasLocation" x="2051" y="-9"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="ujb-Dj-AwG">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="tFO-bd-yfn" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bed-aK-OPu">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="SZR-cL-Erx" kind="relationship" relationship="viewControllers" id="Zmk-ib-EkZ"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QQD-w5-rU3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="216.92307692307691" y="-9.24170616113744"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="6B5-s6-gFs">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SZR-cL-Erx" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Nf8-br-AJr"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tuI-TI-TFo">
+                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="2dB-PW-KXp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wpa-9d-uj0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1181.5384615384614" y="-9.24170616113744"/>
         </scene>
     </scenes>
     <resources>
+        <image name="line.3.horizontal" catalog="system" width="128" height="65"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
