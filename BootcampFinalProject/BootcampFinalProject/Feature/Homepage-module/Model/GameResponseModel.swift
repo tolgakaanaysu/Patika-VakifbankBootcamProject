@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GameResponseModel: Codable {
+struct GameResponseModel: Decodable {
     let count: Int
     let next: String
     let results: [Game]
