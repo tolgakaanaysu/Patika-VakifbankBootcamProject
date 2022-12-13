@@ -14,6 +14,8 @@ struct Game: Decodable {
     let gameDescription:  String
     let descriptionRaw:  String
     let rating : Int
+    let backgroundImage: String
+    let backgroundImageAdditional: String
     
     private enum CodingKeys: String, CodingKey {
         case id, name
@@ -21,6 +23,8 @@ struct Game: Decodable {
         case gameDescription = "description"
         case rating
         case descriptionRaw = "description_raw"
+        case backgroundImage = "background_image"
+        case backgroundImageAdditional = "background_image_additional"
     }
 }
 
