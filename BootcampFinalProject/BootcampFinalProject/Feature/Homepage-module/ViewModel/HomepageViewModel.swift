@@ -18,11 +18,16 @@ protocol HomepageViewModelDelegate {
 final class HomepageViewModel: HomepageViewModelDelegate {
     //MARK: - Property
     weak var view: HomepageViewControllerDelegate?
-    var gameList = [Game]()
+    var gameList = [Game]() {
+        didSet{
+            view?.collectionViewReloadData()
+        }
+    }
     
     //MARK: - Lifecycle
     func viewDidLoad() {
         view?.prepareCollectionView()
+        getAllGames()
     }
     
     //MARK: - CollectionViewDataSourceMethods
@@ -33,4 +38,19 @@ final class HomepageViewModel: HomepageViewModelDelegate {
     func cellForItemAt(at indexPath: IndexPath) -> Game? {
         gameList[indexPath.row]
     }
+    
+    //MARK: - Private Methods
+    private func getAllGames(){
+        NetworkManager.shared.getAllGames(queryItems: []) {[weak self] result in
+            guard let self else { return }
+            switch result {
+            case .success(let games):
+                self.gameList = games
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    
 }
