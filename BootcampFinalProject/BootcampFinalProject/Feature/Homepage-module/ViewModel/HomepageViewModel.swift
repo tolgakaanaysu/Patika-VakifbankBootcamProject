@@ -13,12 +13,16 @@ protocol HomepageViewModelDelegate {
     func viewDidLoad()
     func numberOfItemsInSection() -> Int
     func cellForItemAt(at indexPath: IndexPath) -> Game?
+    func didSelectItemAt(at indexPath: IndexPath)
     func updateSearchResults(text: String?)
+    func getGameID() -> Int?
+    
 }
 
 final class HomepageViewModel: HomepageViewModelDelegate {
     //MARK: - Property
     weak var view: HomepageViewControllerDelegate?
+    private var id: Int?
     private var mainGameList = [Game](){
         didSet{
             filteredGameList = mainGameList
@@ -45,7 +49,14 @@ final class HomepageViewModel: HomepageViewModelDelegate {
     func cellForItemAt(at indexPath: IndexPath) -> Game? {
         filteredGameList[indexPath.row]
     }
-    //MARK: -
+    
+    //MARK: - CollectionViewDelegateMethods
+    func didSelectItemAt(at indexPath: IndexPath) {
+        self.id = filteredGameList[indexPath.row].id
+        view?.performSegue(identifier: "homepageToDetail")
+    }
+    
+    //MARK: - SearchBar Method
     func updateSearchResults(text: String?) {
         if text.isNilOrEmpty {
             filteredGameList = mainGameList
@@ -54,6 +65,10 @@ final class HomepageViewModel: HomepageViewModelDelegate {
             filteredGameList = mainGameList.filter({ $0.name.uppercased().contains(text!.uppercased())})
         }
         
+    }
+    
+    func getGameID() -> Int? {
+        self.id
     }
     
     //MARK: - Private Methods
