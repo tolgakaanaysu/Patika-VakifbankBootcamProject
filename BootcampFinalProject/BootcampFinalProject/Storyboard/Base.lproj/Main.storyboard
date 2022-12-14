@@ -42,11 +42,76 @@
                     </navigationItem>
                     <connections>
                         <outlet property="gameCollectionView" destination="bnL-BD-rSZ" id="Y6W-1O-VMa"/>
+                        <segue destination="56U-Ze-CF3" kind="show" identifier="homepageToDetail" id="9AN-Ua-bOC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2051" y="-9"/>
+        </scene>
+        <!--Details View Controller-->
+        <scene sceneID="2Vg-3i-Ua0">
+            <objects>
+                <viewController id="56U-Ze-CF3" customClass="DetailsViewController" customModule="BootcampFinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="T15-vO-gOe">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating: 4.5" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i6u-lJ-edL">
+                                <rect key="frame" x="287.66666666666669" y="429.66666666666669" width="86.333333333333314" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" systemColor="separatorColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="uZb-HI-waO">
+                                <rect key="frame" x="0.0" y="91" width="390" height="34.666666666666657"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GQX-Dc-ZGt">
+                                <rect key="frame" x="16" y="486" width="358" height="275"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NZb-Ab-SF8">
+                                <rect key="frame" x="0.0" y="157.66666666666663" width="390" height="256"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="256" id="k1M-lf-Gdj"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="v9S-za-hMh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="uZb-HI-waO" firstAttribute="leading" secondItem="v9S-za-hMh" secondAttribute="leading" id="A2J-mh-ReF"/>
+                            <constraint firstItem="v9S-za-hMh" firstAttribute="trailing" secondItem="uZb-HI-waO" secondAttribute="trailing" id="AUD-U8-s0H"/>
+                            <constraint firstItem="v9S-za-hMh" firstAttribute="trailing" secondItem="i6u-lJ-edL" secondAttribute="trailing" constant="16" id="Bu0-7t-ioP"/>
+                            <constraint firstItem="uZb-HI-waO" firstAttribute="top" secondItem="v9S-za-hMh" secondAttribute="top" id="Gfi-ln-sS0"/>
+                            <constraint firstItem="NZb-Ab-SF8" firstAttribute="top" secondItem="uZb-HI-waO" secondAttribute="bottom" constant="32" id="b6d-z7-SRx"/>
+                            <constraint firstItem="NZb-Ab-SF8" firstAttribute="leading" secondItem="v9S-za-hMh" secondAttribute="leading" id="dev-Tm-k98"/>
+                            <constraint firstItem="NZb-Ab-SF8" firstAttribute="trailing" secondItem="v9S-za-hMh" secondAttribute="trailing" id="g1C-dq-6qq"/>
+                            <constraint firstItem="i6u-lJ-edL" firstAttribute="top" secondItem="NZb-Ab-SF8" secondAttribute="bottom" constant="16" id="qkX-Jh-iYz"/>
+                            <constraint firstItem="i6u-lJ-edL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="v9S-za-hMh" secondAttribute="leading" symbolic="YES" id="rBY-IG-QJZ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="9A1-6y-Vct">
+                        <barButtonItem key="rightBarButtonItem" image="star" catalog="system" id="5Ph-eq-wXJ"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="NZb-Ab-SF8" id="Bgl-k9-6IO"/>
+                        <outlet property="nameLabel" destination="uZb-HI-waO" id="VTb-4C-elA"/>
+                        <outlet property="ratingLabel" destination="i6u-lJ-edL" id="xql-Kd-D30"/>
+                        <outlet property="textView" destination="GQX-Dc-ZGt" id="ZtU-hk-w9e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RWb-qI-dFF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2901.5384615384614" y="-9.24170616113744"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ujb-Dj-AwG">
@@ -92,6 +157,13 @@
         <image name="gamecontroller" catalog="system" width="128" height="79"/>
         <image name="gamecontroller.fill" catalog="system" width="128" height="79"/>
         <image name="line.3.horizontal" catalog="system" width="128" height="65"/>
+        <image name="star" catalog="system" width="128" height="116"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="separatorColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
