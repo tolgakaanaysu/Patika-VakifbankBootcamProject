@@ -64,7 +64,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="uZb-HI-waO">
-                                <rect key="frame" x="0.0" y="91" width="390" height="34.666666666666657"/>
+                                <rect key="frame" x="0.0" y="107" width="390" height="34.666666666666657"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -91,8 +91,8 @@
                             <constraint firstItem="uZb-HI-waO" firstAttribute="leading" secondItem="v9S-za-hMh" secondAttribute="leading" id="A2J-mh-ReF"/>
                             <constraint firstItem="v9S-za-hMh" firstAttribute="trailing" secondItem="uZb-HI-waO" secondAttribute="trailing" id="AUD-U8-s0H"/>
                             <constraint firstItem="v9S-za-hMh" firstAttribute="trailing" secondItem="i6u-lJ-edL" secondAttribute="trailing" constant="16" id="Bu0-7t-ioP"/>
-                            <constraint firstItem="uZb-HI-waO" firstAttribute="top" secondItem="v9S-za-hMh" secondAttribute="top" id="Gfi-ln-sS0"/>
-                            <constraint firstItem="NZb-Ab-SF8" firstAttribute="top" secondItem="uZb-HI-waO" secondAttribute="bottom" constant="32" id="b6d-z7-SRx"/>
+                            <constraint firstItem="uZb-HI-waO" firstAttribute="top" secondItem="v9S-za-hMh" secondAttribute="top" constant="16" id="Gfi-ln-sS0"/>
+                            <constraint firstItem="NZb-Ab-SF8" firstAttribute="top" secondItem="uZb-HI-waO" secondAttribute="bottom" constant="16" id="b6d-z7-SRx"/>
                             <constraint firstItem="NZb-Ab-SF8" firstAttribute="leading" secondItem="v9S-za-hMh" secondAttribute="leading" id="dev-Tm-k98"/>
                             <constraint firstItem="NZb-Ab-SF8" firstAttribute="trailing" secondItem="v9S-za-hMh" secondAttribute="trailing" id="g1C-dq-6qq"/>
                             <constraint firstItem="i6u-lJ-edL" firstAttribute="top" secondItem="NZb-Ab-SF8" secondAttribute="bottom" constant="16" id="qkX-Jh-iYz"/>
@@ -100,9 +100,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9A1-6y-Vct">
-                        <barButtonItem key="rightBarButtonItem" image="star" catalog="system" id="5Ph-eq-wXJ"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="5Ph-eq-wXJ">
+                            <imageReference key="image" image="star.fill" catalog="system"/>
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="favoriteButtonClicked:" destination="56U-Ze-CF3" id="Aex-hN-p3A"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="favoriteButton" destination="5Ph-eq-wXJ" id="pGa-Ty-bd1"/>
                         <outlet property="imageView" destination="NZb-Ab-SF8" id="Bgl-k9-6IO"/>
                         <outlet property="nameLabel" destination="uZb-HI-waO" id="VTb-4C-elA"/>
                         <outlet property="ratingLabel" destination="i6u-lJ-edL" id="xql-Kd-D30"/>
@@ -157,7 +164,7 @@
         <image name="gamecontroller" catalog="system" width="128" height="79"/>
         <image name="gamecontroller.fill" catalog="system" width="128" height="79"/>
         <image name="line.3.horizontal" catalog="system" width="128" height="65"/>
-        <image name="star" catalog="system" width="128" height="116"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
