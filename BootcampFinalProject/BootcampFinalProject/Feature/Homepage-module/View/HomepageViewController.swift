@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol HomepageViewControllerDelegate: AnyObject {
+protocol HomepageViewControllerDelegate: AnyObject,SeguePerformable {
     func prepareCollectionView()
     func prepareSearchController()
     func collectionViewReloadData()
