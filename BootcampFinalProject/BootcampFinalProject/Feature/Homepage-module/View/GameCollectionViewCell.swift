@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Kingfisher
+import SDWebImage
 class GameCollectionViewCell: UICollectionViewCell {
     //MARK: - IBOutlet
     @IBOutlet private weak var backgroundImage: UIImageView!
@@ -33,16 +33,16 @@ class GameCollectionViewCell: UICollectionViewCell {
     }
     
     func configureCell(with model: Game) {
-        self.layer.backgroundColor = UIColor.white.cgColor
+        layer.backgroundColor = UIColor.white.cgColor
         layer.cornerRadius = 15
         layer.borderColor = UIColor.black.cgColor
         layer.borderWidth = 1
         ratingLabel.text = model.rating.toString()
         nameLabel.text = model.name
-        guard let url = URL(string: model.imageUrl) else {
-            print("url error")
-            return
-        }
-        backgroundImage.kf.setImage(with: url)
+//        guard let url = URL(string: model.imageUrl) else {
+//            print("url error")
+//            return
+//        }
+//        backgroundImage.sd_setImage(with: url)
     }
 }
