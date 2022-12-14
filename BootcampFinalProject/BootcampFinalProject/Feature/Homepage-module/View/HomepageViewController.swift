@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol HomepageViewControllerDelegate: AnyObject {
+protocol HomepageViewControllerDelegate: AnyObject,SeguePerformable {
     func prepareCollectionView()
     func prepareSearchController()
     func collectionViewReloadData()
@@ -28,6 +28,12 @@ final class HomepageViewController: UIViewController {
         viewModel.view = self
         viewModel.viewDidLoad()
     }
+    
+    //MARK: - Methods
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let detailsVC = segue.destination as? DetailsViewController else { return }
+        detailsVC.id = viewModel.getGameID()
+    }
 }
 
 //MARK: - CollectionViewDataSource
@@ -47,14 +53,22 @@ extension HomepageViewController: UICollectionViewDataSource {
         return cell
     }
 }
+//MARK: - UICollectionViewDelegate
+extension HomepageViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.didSelectItemAt(at: indexPath)
+        print("Clicked: \(indexPath.row)" )
+    }
+}
 
 //MARK: - HomepageViewControllerDelegate
-extension HomepageViewController: HomepageViewControllerDelegate, UICollectionViewDelegateFlowLayout {
+extension HomepageViewController: HomepageViewControllerDelegate {
     func prepareCollectionView() {
         gameCollectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionViewConfig()
         gameCollectionView.backgroundColor = .systemGray3
         gameCollectionView.dataSource = self
+        gameCollectionView.delegate = self
         gameCollectionView.register(GameCollectionViewCell.nib, forCellWithReuseIdentifier: GameCollectionViewCell.identifier)
         
     }
