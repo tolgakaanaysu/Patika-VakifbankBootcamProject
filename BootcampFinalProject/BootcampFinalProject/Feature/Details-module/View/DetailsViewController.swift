@@ -9,6 +9,9 @@ import UIKit
 import SDWebImage
 protocol DetailsViewControllerDelegate {
     func prepareInterfaceComponent(game: GameDetail)
+    func changeButtonColor(_ gameIsFavorite: Bool)
+    func showSuccessMessage(message: String)
+    func showErrorMessage(message: String)
 }
 
 final class DetailsViewController: UIViewController {
@@ -17,6 +20,7 @@ final class DetailsViewController: UIViewController {
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var ratingLabel: UILabel!
     @IBOutlet private weak var textView: UITextView!
+    @IBOutlet private weak var favoriteButton: UIBarButtonItem!
     
     //MARK: - Property
     private lazy var viewModel: DetailsViewModelDelegate = DetailsViewModel()
@@ -26,8 +30,13 @@ final class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let id else { return }
+        viewModel.id = id
         viewModel.view = self
-        viewModel.viewDidLoad(id: id)
+        viewModel.viewDidLoad()
+    }
+    
+    @IBAction func favoriteButtonClicked(_ sender: Any) {
+        viewModel.favoriteButtonClicked()
     }
 }
 
@@ -39,5 +48,19 @@ extension DetailsViewController: DetailsViewControllerDelegate {
         textView.text = game.descriptionRaw
         let url = URL(string: game.backgroundImageAdditional)
         imageView.sd_setImage(with: url)
+    }
+    
+    func changeButtonColor(_ gameIsFavorite: Bool) {
+        favoriteButton.tintColor = gameIsFavorite ? .systemYellow : .systemGray
+    }
+    
+    func showSuccessMessage(message: String) {
+        // Alert
+        print(message)
+    }
+    
+    func showErrorMessage(message: String) {
+        // Alert
+        print(message)
     }
 }
