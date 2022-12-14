@@ -13,12 +13,18 @@ protocol HomepageViewModelDelegate {
     func viewDidLoad()
     func numberOfItemsInSection() -> Int
     func cellForItemAt(at indexPath: IndexPath) -> Game?
+    func updateSearchResults(text: String?)
 }
 
 final class HomepageViewModel: HomepageViewModelDelegate {
     //MARK: - Property
     weak var view: HomepageViewControllerDelegate?
-    var gameList = [Game]() {
+    private var mainGameList = [Game](){
+        didSet{
+            filteredGameList = mainGameList
+        }
+    }
+    private var filteredGameList = [Game](){
         didSet{
             view?.collectionViewReloadData()
         }
@@ -27,16 +33,27 @@ final class HomepageViewModel: HomepageViewModelDelegate {
     //MARK: - Lifecycle
     func viewDidLoad() {
         view?.prepareCollectionView()
+        view?.prepareSearchController()
         getAllGames()
     }
     
     //MARK: - CollectionViewDataSourceMethods
     func numberOfItemsInSection() -> Int {
-        gameList.count
+        filteredGameList.count
     }
     
     func cellForItemAt(at indexPath: IndexPath) -> Game? {
-        gameList[indexPath.row]
+        filteredGameList[indexPath.row]
+    }
+    //MARK: -
+    func updateSearchResults(text: String?) {
+        if text.isNilOrEmpty {
+            filteredGameList = mainGameList
+        
+        } else {
+            filteredGameList = mainGameList.filter({ $0.name.uppercased().contains(text!.uppercased())})
+        }
+        
     }
     
     //MARK: - Private Methods
@@ -45,7 +62,7 @@ final class HomepageViewModel: HomepageViewModelDelegate {
             guard let self else { return }
             switch result {
             case .success(let games):
-                self.gameList = games
+                self.mainGameList = games
             case .failure(let error):
                 print(error)
             }

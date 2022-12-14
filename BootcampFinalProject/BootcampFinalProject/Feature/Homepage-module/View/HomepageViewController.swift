@@ -9,6 +9,7 @@ import UIKit
 
 protocol HomepageViewControllerDelegate: AnyObject {
     func prepareCollectionView()
+    func prepareSearchController()
     func collectionViewReloadData()
 }
 
@@ -23,6 +24,7 @@ final class HomepageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGray3
+        title = "Popüler Games"
         viewModel.view = self
         viewModel.viewDidLoad()
     }
@@ -57,7 +59,12 @@ extension HomepageViewController: HomepageViewControllerDelegate, UICollectionVi
         
     }
     
-
+    func prepareSearchController(){
+        let search = UISearchController(searchResultsController: nil)
+                search.searchResultsUpdater = self
+                search.searchBar.placeholder = "Type something to search"
+                navigationItem.searchController = search
+    }
     
     private func collectionViewConfig(){
           let flowLayout = UICollectionViewFlowLayout()
@@ -75,3 +82,9 @@ extension HomepageViewController: HomepageViewControllerDelegate, UICollectionVi
     }
 }
 
+extension HomepageViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let text = searchController.searchBar.text
+        viewModel.updateSearchResults(text: text)
+    }
+}
