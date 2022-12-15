@@ -53,6 +53,7 @@ final class DetailsViewModel: DetailsViewModelDelegate {
         }
         gameIsFavorite.toggle()
         view?.changeButtonColor(gameIsFavorite)
+        favoriteStatusDidChanged()
     }
     
     //MARK: - Private Methods
@@ -76,5 +77,10 @@ final class DetailsViewModel: DetailsViewModelDelegate {
         }
         gameIsFavorite = true
         view?.changeButtonColor(true)
+    }
+    
+    private func favoriteStatusDidChanged(){
+        //FIXME: Manage notify class
+        NotificationCenter.default.post(name: NSNotification.Name("changeFavoriteStatus"), object: nil)
     }
 }
