@@ -52,7 +52,7 @@
         <!--Details View Controller-->
         <scene sceneID="2Vg-3i-Ua0">
             <objects>
-                <viewController id="56U-Ze-CF3" customClass="DetailsViewController" customModule="BootcampFinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="56U-Ze-CF3" customClass="DetailsViewController" customModule="BootcampFinalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="T15-vO-gOe">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -118,7 +118,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RWb-qI-dFF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2901.5384615384614" y="-9.24170616113744"/>
+            <point key="canvasLocation" x="3025" y="290"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ujb-Dj-AwG">
@@ -132,11 +132,12 @@
                     </tabBar>
                     <connections>
                         <segue destination="SZR-cL-Erx" kind="relationship" relationship="viewControllers" id="Zmk-ib-EkZ"/>
+                        <segue destination="6Cv-WZ-0g8" kind="relationship" relationship="viewControllers" id="Ki1-Rz-Ph1"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QQD-w5-rU3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="216.92307692307691" y="-9.24170616113744"/>
+            <point key="canvasLocation" x="217" y="380"/>
         </scene>
         <!--Games-->
         <scene sceneID="6B5-s6-gFs">
@@ -159,10 +160,66 @@
             </objects>
             <point key="canvasLocation" x="1181.5384615384614" y="-9.24170616113744"/>
         </scene>
+        <!--Favorite ListVC-->
+        <scene sceneID="Eao-BH-174">
+            <objects>
+                <viewController id="2Ki-jP-qKI" customClass="FavoriteListVC" customModule="BootcampFinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TtI-7N-Uqe">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ec9-fx-e9W">
+                                <rect key="frame" x="0.0" y="91" width="390" height="670"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="An9-ED-BKb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="An9-ED-BKb" firstAttribute="bottom" secondItem="ec9-fx-e9W" secondAttribute="bottom" id="Cgo-MP-9PZ"/>
+                            <constraint firstItem="ec9-fx-e9W" firstAttribute="top" secondItem="An9-ED-BKb" secondAttribute="top" id="FDd-cj-pJG"/>
+                            <constraint firstItem="ec9-fx-e9W" firstAttribute="leading" secondItem="An9-ED-BKb" secondAttribute="leading" id="XzF-hS-wDd"/>
+                            <constraint firstItem="An9-ED-BKb" firstAttribute="trailing" secondItem="ec9-fx-e9W" secondAttribute="trailing" id="hTu-4H-0wk"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="hQH-ni-Tam"/>
+                    <connections>
+                        <outlet property="favoriteListTableView" destination="ec9-fx-e9W" id="pEH-IF-fXW"/>
+                        <segue destination="56U-Ze-CF3" kind="show" identifier="favoriteListToDetail" id="2VN-De-6Xx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fqq-jH-gTL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2051" y="693"/>
+        </scene>
+        <!--Favorites-->
+        <scene sceneID="lol-6N-aiV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Cv-WZ-0g8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorites" image="heart.fill" catalog="system" selectedImage="heart" id="kRt-HC-mqb"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vdO-oH-JFE">
+                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2Ki-jP-qKI" kind="relationship" relationship="rootViewController" id="5sY-k2-af8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hlr-1b-zho" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1182" y="693"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="2VN-De-6Xx"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="gamecontroller" catalog="system" width="128" height="79"/>
         <image name="gamecontroller.fill" catalog="system" width="128" height="79"/>
+        <image name="heart" catalog="system" width="128" height="107"/>
+        <image name="heart.fill" catalog="system" width="128" height="107"/>
         <image name="line.3.horizontal" catalog="system" width="128" height="65"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="labelColor">

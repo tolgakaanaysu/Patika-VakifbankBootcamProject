@@ -12,8 +12,7 @@ class GameCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var backgroundImage: UIImageView!
     @IBOutlet private weak var ratingLabel: UILabel!
     @IBOutlet private weak var nameLabel: UILabel!
-    @IBOutlet private weak var view: UIView!
-    @IBOutlet weak var cellWidth: NSLayoutConstraint!
+
     //MARK: - Property
     class var identifier: String {
         return String(describing: self)
@@ -27,7 +26,7 @@ class GameCollectionViewCell: UICollectionViewCell {
     
     
     override func prepareForReuse() {
-        backgroundImage.image = UIImage(systemName: "photo")
+        backgroundImage.image = nil
         ratingLabel.text = ""
         nameLabel.text = ""
     }
@@ -39,10 +38,7 @@ class GameCollectionViewCell: UICollectionViewCell {
         layer.borderWidth = 1
         ratingLabel.text = model.rating.toString()
         nameLabel.text = model.name
-//        guard let url = URL(string: model.imageUrl) else {
-//            print("url error")
-//            return
-//        }
-//        backgroundImage.sd_setImage(with: url)
+//        let url = URL(string: model.imageUrl)
+//        backgroundImage.sd_setImage(with: url,placeholderImage: UIImage(systemName: "photo"))
     }
 }

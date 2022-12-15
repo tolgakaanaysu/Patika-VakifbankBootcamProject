@@ -19,6 +19,12 @@ extension Double {
     }
 }
 
+extension FavoriteGame {
+    var integerID: Int {
+        return Int(self.id!)!
+    }
+}
+
 extension Optional where Wrapped == String {
     var isNilOrEmpty: Bool {
         self == nil || self == ""

@@ -18,6 +18,7 @@ final class DetailsViewModel: DetailsViewModelDelegate {
     //MARK: - Property
     var view: DetailsViewControllerDelegate?
     var id: Int!
+    private var game: GameDetail?
     private var gameIsFavorite: Bool = false
     
     //MARK: - Lifecycle
@@ -28,9 +29,9 @@ final class DetailsViewModel: DetailsViewModelDelegate {
     
     // Methods
     func favoriteButtonClicked() {
-        
+        guard let game else { return }
         if !gameIsFavorite {
-            CoreDataFavoriGameClient.shared.saveFavoriteGame(id: id.toString()){ [weak self] result in
+            CoreDataFavoriGameClient.shared.saveFavoriteGame(id: id.toString(), name: game.name){ [weak self] result in
                 switch result {
                 case .success(let success):
                     self?.view?.showSuccessMessage(message: success.message)
@@ -62,6 +63,7 @@ final class DetailsViewModel: DetailsViewModelDelegate {
                 print(error.localizedDescription)
             case .success(let game):
                 self?.view?.prepareInterfaceComponent(game: game)
+                self?.game = game
             }
         }
     }
