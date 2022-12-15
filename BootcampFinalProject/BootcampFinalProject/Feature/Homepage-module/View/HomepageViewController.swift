@@ -53,6 +53,7 @@ extension HomepageViewController: UICollectionViewDataSource {
         return cell
     }
 }
+
 //MARK: - UICollectionViewDelegate
 extension HomepageViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -75,21 +76,21 @@ extension HomepageViewController: HomepageViewControllerDelegate {
     
     func prepareSearchController(){
         let search = UISearchController(searchResultsController: nil)
-                search.searchResultsUpdater = self
-                search.searchBar.placeholder = "Type something to search"
-                navigationItem.searchController = search
+        search.searchResultsUpdater = self
+        search.searchBar.placeholder = "Type something to search"
+        navigationItem.searchController = search
     }
     
     private func collectionViewConfig(){
-          let flowLayout = UICollectionViewFlowLayout()
-          flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-          flowLayout.minimumInteritemSpacing = 10
-          flowLayout.minimumLineSpacing = 20
-          let genislik = gameCollectionView.frame.size.width
-          let hucre_genislik = (genislik - 30) / 2
-        flowLayout.itemSize = CGSize(width: hucre_genislik, height: hucre_genislik * 1.4)
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        flowLayout.minimumInteritemSpacing = 10
+        flowLayout.minimumLineSpacing = 20
+        let width = gameCollectionView.frame.size.width
+        let cellWidth = (width - 30) / 2
+        flowLayout.itemSize = CGSize(width: cellWidth, height: cellWidth * 1.1)
         gameCollectionView.collectionViewLayout = flowLayout
-      }
+    }
     
     func collectionViewReloadData() {
         gameCollectionView.reloadData()
