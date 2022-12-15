@@ -36,8 +36,7 @@ final class HomepageViewModel: HomepageViewModelDelegate {
     
     //MARK: - Lifecycle
     func viewDidLoad() {
-        view?.prepareCollectionView()
-        view?.prepareSearchController()
+        view?.prepareComponents()
         getAllGames()
     }
     
@@ -73,16 +72,17 @@ final class HomepageViewModel: HomepageViewModelDelegate {
     
     //MARK: - Private Methods
     private func getAllGames(){
+        view?.startProgressAnimating()
         NetworkManager.shared.getAllGames(queryItems: []) {[weak self] result in
             guard let self else { return }
+            self.view?.stopAnimating()
             switch result {
             case .success(let games):
                 self.mainGameList = games
             case .failure(let error):
+                self.view?.showErrorAlert(message: error.localizedDescription)
                 print(error)
             }
         }
     }
-    
-    
 }

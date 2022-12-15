@@ -34,9 +34,9 @@ final class DetailsViewModel: DetailsViewModelDelegate {
             CoreDataFavoriGameClient.shared.saveFavoriteGame(id: id.toString(), name: game.name){ [weak self] result in
                 switch result {
                 case .success(let success):
-                    self?.view?.showSuccessMessage(message: success.message)
-                case .failure(let failure):
-                    self?.view?.showErrorMessage(message: failure.message)
+                    self?.view?.showSuccessAlert(message: success.message)
+                case .failure(let error):
+                    self?.view?.showErrorAlert(message: error.message)
                     return
                 }
             }
@@ -44,9 +44,9 @@ final class DetailsViewModel: DetailsViewModelDelegate {
             CoreDataFavoriGameClient.shared.deleteFavoriGame(id: id.toString()){ [weak self] result in
                 switch result {
                 case .success(let success):
-                    self?.view?.showSuccessMessage(message: success.message)
-                case .failure(let failure):
-                    self?.view?.showErrorMessage(message: failure.message)
+                    self?.view?.showSuccessAlert(message: success.message)
+                case .failure(let error):
+                    self?.view?.showErrorAlert(message: error.message)
                     return
                 }
             }
@@ -58,10 +58,12 @@ final class DetailsViewModel: DetailsViewModelDelegate {
     
     //MARK: - Private Methods
     private func getGameDetails(by id: Int){
+        view?.startProgressAnimating()
         NetworkManager.shared.getGameDetails(by: id) { [weak self] result in
+            self?.view?.stopAnimating()
             switch result {
             case .failure(let error):
-                print(error.localizedDescription)
+                self?.view?.showErrorAlert(message: error.localizedDescription)
             case .success(let game):
                 self?.view?.prepareInterfaceComponent(game: game)
                 self?.game = game
