@@ -33,6 +33,7 @@ final class FavoriListViewModel: FavoriListViewModelInterface {
     func viewDidLoad(){
         view?.prepareTableView()
         getFavoriteGames()
+        favoriteStatusWillChange()
     }
  
     //MARK: - IBAction methods
@@ -48,8 +49,6 @@ final class FavoriListViewModel: FavoriListViewModelInterface {
             }
         }
     }
-    
-    
     
     //MARK: -TableViewDataSourceMethods
     func numberOfRowsInSection() -> Int {
@@ -77,5 +76,10 @@ final class FavoriListViewModel: FavoriListViewModelInterface {
                 self?.view?.showError(message: error.message)
             }
         }
+    }
+    
+    private func favoriteStatusWillChange(){
+        //FIXME: Manage notify class
+        NotificationCenter.default.addObserver(self, selector: #selector(getFavoriteGames), name: NSNotification.Name("changeFavoriteStatus"), object: nil)
     }
 }
