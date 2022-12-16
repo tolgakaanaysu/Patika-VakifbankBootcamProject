@@ -16,6 +16,8 @@ protocol HomepageViewModelDelegate {
     func didSelectItemAt(at indexPath: IndexPath)
     func updateSearchResults(text: String?)
     func getGameID() -> Int?
+    func getGameOrdering(with queryValue: String)
+    
     
 }
 
@@ -39,6 +41,13 @@ final class HomepageViewModel: HomepageViewModelDelegate {
         view?.prepareComponents()
         getAllGames()
     }
+    
+    //MARK: - IBOActionMethods
+    func getGameOrdering(with queryValue: String) {
+        let queryItem = URLQueryItem(name: "ordering", value: queryValue)
+        getAllGames(queryItems: [queryItem])
+    }
+    
     
     //MARK: - CollectionViewDataSourceMethods
     func numberOfItemsInSection() -> Int {
@@ -71,9 +80,9 @@ final class HomepageViewModel: HomepageViewModelDelegate {
     }
     
     //MARK: - Private Methods
-    private func getAllGames(){
+    private func getAllGames(queryItems: [URLQueryItem] = []){
         view?.startProgressAnimating()
-        NetworkManager.shared.getAllGames(queryItems: []) {[weak self] result in
+        NetworkManager.shared.getAllGames(queryItems: queryItems) {[weak self] result in
             guard let self else { return }
             self.view?.stopAnimating()
             switch result {
@@ -82,7 +91,14 @@ final class HomepageViewModel: HomepageViewModelDelegate {
             case .failure(let error):
                 self.view?.showErrorAlert(message: error.localizedDescription)
                 print(error)
+                return
             }
         }
     }
+}
+
+class GameSortingType {
+    static let name = "-name"
+    static let rating = "-rating"
+    static let updated = "-updated"
 }

@@ -24,12 +24,38 @@ final class HomepageViewController: UIViewController {
         super.viewDidLoad()
         viewModel.view = self
         viewModel.viewDidLoad()
+        
     }
     
     //MARK: - Override Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let detailsVC = segue.destination as? DetailsViewController else { return }
         detailsVC.id = viewModel.getGameID()
+    }
+    
+    //MARK: - IBAction Methods
+    @IBAction func menuButtonClicked(_ sender: Any) {
+        let actionSheet = UIAlertController(title: "Filter", message: "Please choise one item", preferredStyle: .actionSheet)
+     
+        
+        let nameAction = createUIAlertAction(title: GameSortingType.name)
+        actionSheet.addAction(nameAction)
+        
+        let ratingAction = createUIAlertAction(title: GameSortingType.rating)
+        actionSheet.addAction(ratingAction)
+        
+        let updatedAction = createUIAlertAction(title: GameSortingType.updated)
+        actionSheet.addAction(updatedAction)
+        
+        self.present(actionSheet, animated: true)
+    }
+    
+    private func createUIAlertAction(title: String) -> UIAlertAction {
+        let action = UIAlertAction(title: title, style: .default) { [weak self] _ in
+            self?.viewModel.getGameOrdering(with: title)
+            self?.dismiss(animated: true)
+        }
+        return action
     }
     
     //MARK: - Private Methods
@@ -46,9 +72,16 @@ final class HomepageViewController: UIViewController {
         let search = UISearchController(searchResultsController: nil)
         search.searchResultsUpdater = self
         search.searchBar.placeholder = "Type something to search"
+        search.searchBar.barTintColor = .systemIndigo
+        search.searchBar.searchTextField.textColor = .darkGray
+        search.searchBar.searchTextField.tokenBackgroundColor = .red
+        search.searchBar.searchTextField.backgroundColor = .white
+        search.searchBar.layer.borderWidth = 1
+        search.searchBar.layer.borderColor = UIColor.systemIndigo.cgColor
         navigationItem.searchController = search
     }
     
+   
     private func collectionViewConfig(){
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
