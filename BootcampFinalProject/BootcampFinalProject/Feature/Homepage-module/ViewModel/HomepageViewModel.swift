@@ -16,6 +16,8 @@ protocol HomepageViewModelDelegate {
     func didSelectItemAt(at indexPath: IndexPath)
     func updateSearchResults(text: String?)
     func getGameID() -> Int?
+    func getGameOrdering(with queryValue: String)
+    
     
 }
 
@@ -36,10 +38,16 @@ final class HomepageViewModel: HomepageViewModelDelegate {
     
     //MARK: - Lifecycle
     func viewDidLoad() {
-        view?.prepareCollectionView()
-        view?.prepareSearchController()
+        view?.prepareComponents()
         getAllGames()
     }
+    
+    //MARK: - IBOActionMethods
+    func getGameOrdering(with queryValue: String) {
+        let queryItem = URLQueryItem(name: "ordering", value: queryValue)
+        getAllGames(queryItems: [queryItem])
+    }
+    
     
     //MARK: - CollectionViewDataSourceMethods
     func numberOfItemsInSection() -> Int {
@@ -72,17 +80,25 @@ final class HomepageViewModel: HomepageViewModelDelegate {
     }
     
     //MARK: - Private Methods
-    private func getAllGames(){
-        NetworkManager.shared.getAllGames(queryItems: []) {[weak self] result in
+    private func getAllGames(queryItems: [URLQueryItem] = []){
+        view?.startProgressAnimating()
+        NetworkManager.shared.getAllGames(queryItems: queryItems) {[weak self] result in
             guard let self else { return }
+            self.view?.stopAnimating()
             switch result {
             case .success(let games):
                 self.mainGameList = games
             case .failure(let error):
+                self.view?.showErrorAlert(message: error.localizedDescription)
                 print(error)
+                return
             }
         }
     }
-    
-    
+}
+
+class GameSortingType {
+    static let name = "-name"
+    static let rating = "-rating"
+    static let updated = "-updated"
 }

@@ -28,7 +28,9 @@ struct Endpoint {
 
 extension Endpoint {
     static func getAllGames(queryItems: [URLQueryItem]) -> Endpoint {
-        return Endpoint(path: "games",queryItems: queryItems )
+        var items = queryItems
+        items.append(Endpoint.apiKeyItem)
+        return Endpoint(path: "games",queryItems: items )
     }
     
     static func getGameDetails(withID id: String) -> Endpoint {

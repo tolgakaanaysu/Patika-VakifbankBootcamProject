@@ -12,7 +12,7 @@
         <!--Homepage View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomepageViewController" customModule="BootcampFinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomepageViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="HomepageViewController" customModule="BootcampFinalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,7 +38,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Odl-tO-udk">
-                        <barButtonItem key="rightBarButtonItem" image="line.3.horizontal" catalog="system" id="p3Z-Kc-qgh"/>
+                        <barButtonItem key="rightBarButtonItem" image="line.3.horizontal" catalog="system" id="p3Z-Kc-qgh">
+                            <connections>
+                                <action selector="menuButtonClicked:" destination="BYZ-38-t0r" id="lm7-WT-uCx"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="gameCollectionView" destination="bnL-BD-rSZ" id="Y6W-1O-VMa"/>
@@ -192,11 +196,11 @@
             </objects>
             <point key="canvasLocation" x="2051" y="693"/>
         </scene>
-        <!--Favorites-->
+        <!--Navigation Controller-->
         <scene sceneID="lol-6N-aiV">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Cv-WZ-0g8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorites" image="heart.fill" catalog="system" selectedImage="heart" id="kRt-HC-mqb"/>
+                    <tabBarItem key="tabBarItem" image="heart" catalog="system" selectedImage="heart.fill" id="kRt-HC-mqb"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vdO-oH-JFE">
                         <rect key="frame" x="0.0" y="47" width="390" height="44"/>
@@ -213,7 +217,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="2VN-De-6Xx"/>
+        <segue reference="9AN-Ua-bOC"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="gamecontroller" catalog="system" width="128" height="79"/>

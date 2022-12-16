@@ -7,11 +7,9 @@
 
 import UIKit
 import SDWebImage
-protocol DetailsViewControllerDelegate {
+protocol DetailsViewControllerDelegate: Alert {
     func prepareInterfaceComponent(game: GameDetail)
     func changeButtonColor(_ gameIsFavorite: Bool)
-    func showSuccessMessage(message: String)
-    func showErrorMessage(message: String)
 }
 
 final class DetailsViewController: UIViewController {
@@ -52,15 +50,5 @@ extension DetailsViewController: DetailsViewControllerDelegate {
     
     func changeButtonColor(_ gameIsFavorite: Bool) {
         favoriteButton.tintColor = gameIsFavorite ? .systemYellow : .systemGray
-    }
-    
-    func showSuccessMessage(message: String) {
-        // Alert
-        print(message)
-    }
-    
-    func showErrorMessage(message: String) {
-        // Alert
-        print(message)
     }
 }

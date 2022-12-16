@@ -15,7 +15,6 @@ protocol FavoriListViewModelInterface {
     func cellForRowItem(at indexPath: IndexPath) -> FavoriteGame
     func didSelectRowAt(at indexPath: IndexPath)
     func deleteButtonAction(at indexPath: IndexPath)
-   
 }
 
 final class FavoriListViewModel: FavoriListViewModelInterface {
@@ -42,10 +41,10 @@ final class FavoriListViewModel: FavoriListViewModelInterface {
         CoreDataFavoriGameClient.shared.deleteFavoriGame(id: favoriGame.id!) { [weak self] result in
             switch result {
             case .success(let success):
-                self?.view?.showSuccesMessage(message: success.message)
-                self?.view?.tableViewReloadData()
+                self?.view?.showSuccessAlert(message: success.message)
+                self?.getFavoriteGames()
             case .failure(let error):
-                self?.view?.showError(message: error.message)
+                self?.view?.showErrorAlert(message: error.message)
             }
         }
     }
@@ -73,7 +72,7 @@ final class FavoriListViewModel: FavoriListViewModelInterface {
             case .success(let favoriteGames):
                 self?.favoriteGames = favoriteGames
             case .failure(let error):
-                self?.view?.showError(message: error.message)
+                self?.view?.showErrorAlert(message: error.message)
             }
         }
     }

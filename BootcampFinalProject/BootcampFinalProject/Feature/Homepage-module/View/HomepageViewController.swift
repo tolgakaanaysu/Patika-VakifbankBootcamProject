@@ -7,9 +7,8 @@
 
 import UIKit
 
-protocol HomepageViewControllerDelegate: AnyObject,SeguePerformable {
-    func prepareCollectionView()
-    func prepareSearchController()
+protocol HomepageViewControllerDelegate: AnyObject,SeguePerformable,Alert {
+    func prepareComponents()
     func collectionViewReloadData()
 }
 
@@ -23,16 +22,75 @@ final class HomepageViewController: UIViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemGray3
-        title = "Popüler Games"
         viewModel.view = self
         viewModel.viewDidLoad()
+        
     }
     
-    //MARK: - Methods
+    //MARK: - Override Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let detailsVC = segue.destination as? DetailsViewController else { return }
         detailsVC.id = viewModel.getGameID()
+    }
+    
+    //MARK: - IBAction Methods
+    @IBAction func menuButtonClicked(_ sender: Any) {
+        let actionSheet = UIAlertController(title: "Filter", message: "Please choise one item", preferredStyle: .actionSheet)
+     
+        
+        let nameAction = createUIAlertAction(title: GameSortingType.name)
+        actionSheet.addAction(nameAction)
+        
+        let ratingAction = createUIAlertAction(title: GameSortingType.rating)
+        actionSheet.addAction(ratingAction)
+        
+        let updatedAction = createUIAlertAction(title: GameSortingType.updated)
+        actionSheet.addAction(updatedAction)
+        
+        self.present(actionSheet, animated: true)
+    }
+    
+    private func createUIAlertAction(title: String) -> UIAlertAction {
+        let action = UIAlertAction(title: title, style: .default) { [weak self] _ in
+            self?.viewModel.getGameOrdering(with: title)
+            self?.dismiss(animated: true)
+        }
+        return action
+    }
+    
+    //MARK: - Private Methods
+    private func prepareCollectionView() {
+        gameCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionViewConfig()
+        gameCollectionView.backgroundColor = .systemGray3
+        gameCollectionView.dataSource = self
+        gameCollectionView.delegate = self
+        gameCollectionView.register(GameCollectionViewCell.nib, forCellWithReuseIdentifier: GameCollectionViewCell.identifier)
+    }
+    
+    private func prepareSearchController(){
+        let search = UISearchController(searchResultsController: nil)
+        search.searchResultsUpdater = self
+        search.searchBar.placeholder = "Type something to search"
+        search.searchBar.barTintColor = .systemIndigo
+        search.searchBar.searchTextField.textColor = .darkGray
+        search.searchBar.searchTextField.tokenBackgroundColor = .red
+        search.searchBar.searchTextField.backgroundColor = .white
+        search.searchBar.layer.borderWidth = 1
+        search.searchBar.layer.borderColor = UIColor.systemIndigo.cgColor
+        navigationItem.searchController = search
+    }
+    
+   
+    private func collectionViewConfig(){
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        flowLayout.minimumInteritemSpacing = 10
+        flowLayout.minimumLineSpacing = 20
+        let width = gameCollectionView.frame.size.width
+        let cellWidth = (width - 30) / 2
+        flowLayout.itemSize = CGSize(width: cellWidth, height: cellWidth * 1.1)
+        gameCollectionView.collectionViewLayout = flowLayout
     }
 }
 
@@ -64,32 +122,11 @@ extension HomepageViewController: UICollectionViewDelegate {
 
 //MARK: - HomepageViewControllerDelegate
 extension HomepageViewController: HomepageViewControllerDelegate {
-    func prepareCollectionView() {
-        gameCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionViewConfig()
-        gameCollectionView.backgroundColor = .systemGray3
-        gameCollectionView.dataSource = self
-        gameCollectionView.delegate = self
-        gameCollectionView.register(GameCollectionViewCell.nib, forCellWithReuseIdentifier: GameCollectionViewCell.identifier)
-        
-    }
-    
-    func prepareSearchController(){
-        let search = UISearchController(searchResultsController: nil)
-        search.searchResultsUpdater = self
-        search.searchBar.placeholder = "Type something to search"
-        navigationItem.searchController = search
-    }
-    
-    private func collectionViewConfig(){
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        flowLayout.minimumInteritemSpacing = 10
-        flowLayout.minimumLineSpacing = 20
-        let width = gameCollectionView.frame.size.width
-        let cellWidth = (width - 30) / 2
-        flowLayout.itemSize = CGSize(width: cellWidth, height: cellWidth * 1.1)
-        gameCollectionView.collectionViewLayout = flowLayout
+    func prepareComponents() {
+        view.backgroundColor = .systemGray3
+        title = "Popüler Games"
+        prepareCollectionView()
+        prepareSearchController()
     }
     
     func collectionViewReloadData() {
@@ -97,6 +134,7 @@ extension HomepageViewController: HomepageViewControllerDelegate {
     }
 }
 
+//MARK: - UISearchResultsUpdating
 extension HomepageViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let text = searchController.searchBar.text

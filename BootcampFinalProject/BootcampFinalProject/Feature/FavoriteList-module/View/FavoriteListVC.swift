@@ -7,11 +7,9 @@
 
 import UIKit
 
-protocol FavoriteListVCDelegate: AnyObject, SeguePerformable {
+protocol FavoriteListVCDelegate: AnyObject, SeguePerformable, Alert {
     func tableViewReloadData()
     func prepareTableView()
-    func showError(message: String)
-    func showSuccesMessage(message: String)
 }
 
 final class FavoriteListVC: UIViewController {
@@ -82,12 +80,5 @@ extension FavoriteListVC: FavoriteListVCDelegate {
     func viewModelReload(with viewModel: FavoriListViewModel) {
         self.viewModel = viewModel
         favoriteListTableView.reloadData()
-    }
-    
-    func showError(message: String) {
-        print(message)
-    }
-    func showSuccesMessage(message: String) {
-        print(message)
     }
 }
