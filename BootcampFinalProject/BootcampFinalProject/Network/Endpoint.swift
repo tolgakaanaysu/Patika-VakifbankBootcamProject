@@ -7,18 +7,22 @@
 
 import Foundation
 
+
 struct Endpoint {
     private static let apiKeyItem = URLQueryItem(name: "key", value: "" /*API KEY*/)
+    private let schema = "https"
+    private let host = "api.rawg.io"
+    private let prePath = "/api/"
+    
     var path: String
     var queryItems: [URLQueryItem] = []
     var url: URL {
         var components = URLComponents()
-        components.scheme = "https"
-        components.host = "api.rawg.io"
-        components.path = "/api/" + path
+        components.scheme = schema
+        components.host = host
+        components.path = prePath + path
         components.queryItems = queryItems
         components.queryItems?.append(Endpoint.apiKeyItem)
-        
         guard let url = components.url else {
             preconditionFailure("Invalid URL components: \(components)")
         }

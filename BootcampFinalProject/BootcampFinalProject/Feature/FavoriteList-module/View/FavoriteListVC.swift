@@ -71,14 +71,10 @@ extension FavoriteListVC: FavoriteListVCDelegate {
         favoriteListTableView.delegate = self
         favoriteListTableView.dataSource = self
         favoriteListTableView.register(FavoriteListCell.nib, forCellReuseIdentifier: FavoriteListCell.identifier)
+        self.title = LocalizableConstant.favoriteListTitle
     }
     
     func tableViewReloadData() {
-        favoriteListTableView.reloadData()
-    }
-  
-    func viewModelReload(with viewModel: FavoriListViewModel) {
-        self.viewModel = viewModel
         favoriteListTableView.reloadData()
     }
 }

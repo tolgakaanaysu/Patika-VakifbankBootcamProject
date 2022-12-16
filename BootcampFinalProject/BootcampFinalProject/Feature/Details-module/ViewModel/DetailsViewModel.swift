@@ -83,6 +83,6 @@ final class DetailsViewModel: DetailsViewModelDelegate {
     
     private func favoriteStatusDidChanged(){
         //FIXME: Manage notify class
-        NotificationCenter.default.post(name: NSNotification.Name("changeFavoriteStatus"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(LocalMessage.favoriteStatusDidChanged), object: nil)
     }
 }

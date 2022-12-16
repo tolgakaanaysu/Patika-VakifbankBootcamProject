@@ -61,7 +61,7 @@ final class HomepageViewModel: HomepageViewModelDelegate {
     //MARK: - CollectionViewDelegateMethods
     func didSelectItemAt(at indexPath: IndexPath) {
         self.id = filteredGameList[indexPath.row].id
-        view?.performSegue(identifier: "homepageToDetail")
+        view?.performSegue(identifier: Identifiers.homepageVCToDetailsVC)
     }
     
     //MARK: - SearchBar Method
