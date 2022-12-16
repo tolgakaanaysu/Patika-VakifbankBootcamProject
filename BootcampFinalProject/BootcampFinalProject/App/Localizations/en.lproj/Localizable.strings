@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  BootcampFinalProject
+
+  Created by Tolga Kağan Aysu on 16.12.2022.
+  
+*/
+
+
+//MARK: - Action Sheet
+"menuActionSheetMessage" = "Choose one item";
+"menuActionSheetTitle" = "Filter";
+
+//MARK: - Searchbar
+"searchBarPlaceholder" = "Type something to search";
+
+//MARK: - ViewControllers Title
+"homepageTitle" = "Populer Games";
+"favoriteListTitle" = "My Favorite Games";
+
