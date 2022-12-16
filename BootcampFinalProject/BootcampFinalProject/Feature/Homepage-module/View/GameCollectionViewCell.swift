@@ -36,9 +36,9 @@ class GameCollectionViewCell: UICollectionViewCell {
         layer.cornerRadius = 15
         layer.borderColor = UIColor.black.cgColor
         layer.borderWidth = 1
-        ratingLabel.text = model.rating.toString()
+        ratingLabel.text = "Rate: " + model.rating.toString()
         nameLabel.text = model.name
-//        let url = URL(string: model.imageUrl)
-//        backgroundImage.sd_setImage(with: url,placeholderImage: UIImage(systemName: "photo"))
+        let url = URL(string: model.imageUrl)
+        backgroundImage.sd_setImage(with: url,placeholderImage: UIImage(systemName: "photo"))
     }
 }
