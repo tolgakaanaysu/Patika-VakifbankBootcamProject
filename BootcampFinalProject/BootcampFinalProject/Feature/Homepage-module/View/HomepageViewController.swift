@@ -35,8 +35,9 @@ final class HomepageViewController: UIViewController {
     
     //MARK: - IBAction Methods
     @IBAction func menuButtonClicked(_ sender: Any) {
-        let actionSheet = UIAlertController(title: "Filter", message: "Please choise one item", preferredStyle: .actionSheet)
-     
+        let actionSheet = UIAlertController(title: LocalizableConstant.menuActionSheetTitle, message: LocalizableConstant.menuActionSheetMessage, preferredStyle: .actionSheet)
+        let closeButton = UIAlertAction(title: "Cancel", style: .cancel)
+        actionSheet.addAction(closeButton)
         
         let nameAction = createUIAlertAction(title: GameSortingType.name)
         actionSheet.addAction(nameAction)
@@ -71,7 +72,7 @@ final class HomepageViewController: UIViewController {
     private func prepareSearchController(){
         let search = UISearchController(searchResultsController: nil)
         search.searchResultsUpdater = self
-        search.searchBar.placeholder = "Type something to search"
+        search.searchBar.placeholder = LocalizableConstant.searchBarPlaceholder
         search.searchBar.barTintColor = .systemIndigo
         search.searchBar.searchTextField.textColor = .darkGray
         search.searchBar.searchTextField.tokenBackgroundColor = .red
@@ -116,7 +117,6 @@ extension HomepageViewController: UICollectionViewDataSource {
 extension HomepageViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.didSelectItemAt(at: indexPath)
-        print("Clicked: \(indexPath.row)" )
     }
 }
 

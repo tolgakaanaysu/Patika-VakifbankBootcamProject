@@ -62,7 +62,7 @@ final class FavoriListViewModel: FavoriListViewModelInterface {
     func didSelectRowAt(at indexPath: IndexPath) {
         selectedFavoriteGame = favoriteGames[indexPath.row]
         guard selectedFavoriteGame != nil else { return }
-        view?.performSegue(identifier: "favoriteListToDetail")
+        view?.performSegue(identifier: Identifiers.favoriteListVCToDetailsVC)
     }
     
     //MARK: - Private methods
