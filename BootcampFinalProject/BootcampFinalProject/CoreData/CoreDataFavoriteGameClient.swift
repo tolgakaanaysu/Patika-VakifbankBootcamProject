@@ -8,6 +8,7 @@
 import Foundation
 
 final class CoreDataFavoriGameClient {
+    //MARK: - Property
     static let shared: CoreDataFavoriGameClient = CoreDataFavoriGameClient()
     private let entityName = "FavoriteGame"
     private let coredata = CoreDataManager.shared

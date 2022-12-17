@@ -7,8 +7,10 @@
 
 import UIKit
 
-class CommunicationBetweenModules {
+final class CommunicationBetweenModules {
     static let shared = CommunicationBetweenModules()
+    
+    private init() {}
     
     func post(name: String){
         NotificationCenter.default.post(name: NSNotification.Name(name), object: nil)

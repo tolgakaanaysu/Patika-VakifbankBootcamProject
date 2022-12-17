@@ -8,12 +8,13 @@
 import Foundation
 
 final class CoreDataNoteClient {
+    //MARK: - Property
     static let shared: CoreDataNoteClient = CoreDataNoteClient()
     private let entityName = "Note"
     private let coredata = CoreDataManager.shared
     private init(){}
     
-    //MARK: - NEW METHODS
+    //MARK: - METHODS
     func saveNote(note: Note, completion: @escaping(Result<CoreDataCustomSuccesMessage,CoreDataCustomError>) -> Void){
         coredata.saveObject(entityName: self.entityName) { object in
             object.setValue(note.text, forKey: "text")

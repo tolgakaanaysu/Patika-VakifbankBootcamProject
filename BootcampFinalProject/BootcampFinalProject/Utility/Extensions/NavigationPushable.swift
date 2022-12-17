@@ -1,28 +1,18 @@
 //
-//  SegueConformable.swift
+//  NavigationPushable.swift
 //  BootcampFinalProject
 //
-//  Created by Tolga Kağan Aysu on 14.12.2022.
+//  Created by Tolga Kağan Aysu on 17.12.2022.
 //
 
 import UIKit
 
-protocol SeguePerformable {
-    func performSegue(identifier: String)
-}
-
-extension SeguePerformable where Self: UIViewController {
-    func performSegue(identifier: String){
-        performSegue(withIdentifier: identifier, sender: self)
-    }
-}
-
-protocol NavigationDelegate {
+protocol NavigationPushable {
     func pushViewController(with viewControllerID: String)
     func popViewController()
 }
 
-extension NavigationDelegate where Self: UIViewController {
+extension NavigationPushable where Self: UIViewController {
     func pushViewController(with viewControllerID: String) {
         let viewController = storyboard!.instantiateViewController(identifier: viewControllerID)
         navigationController?.pushViewController(viewController, animated: true)

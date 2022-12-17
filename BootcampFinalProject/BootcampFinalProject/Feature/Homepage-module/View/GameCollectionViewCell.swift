@@ -22,9 +22,6 @@ class GameCollectionViewCell: UICollectionViewCell {
         return UINib(nibName: identifier, bundle: nil)
     }
     
-    
-    
-    
     override func prepareForReuse() {
         backgroundImage.image = nil
         ratingLabel.text = ""
