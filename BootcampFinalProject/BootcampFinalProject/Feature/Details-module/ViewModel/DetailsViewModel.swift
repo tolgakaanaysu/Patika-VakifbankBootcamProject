@@ -12,6 +12,7 @@ protocol DetailsViewModelDelegate {
     var id: Int! { get set }
     func viewDidLoad()
     func favoriteButtonClicked()
+    func sendNotificationForDataNotFound()
 }
 
 final class DetailsViewModel: DetailsViewModelDelegate {
@@ -62,8 +63,8 @@ final class DetailsViewModel: DetailsViewModelDelegate {
         NetworkManager.shared.getGameDetails(by: id) { [weak self] result in
             self?.view?.stopAnimating()
             switch result {
-            case .failure(let error):
-                self?.view?.showErrorAlert(message: error.localizedDescription)
+            case .failure(_):
+                self?.view?.dataNotFound()
             case .success(let game):
                 self?.view?.prepareInterfaceComponent(game: game)
                 self?.game = game
@@ -82,7 +83,10 @@ final class DetailsViewModel: DetailsViewModelDelegate {
     }
     
     private func favoriteStatusDidChanged(){
-        //FIXME: Manage notify class
-        NotificationCenter.default.post(name: NSNotification.Name(LocalMessage.favoriteStatusDidChanged), object: nil)
+        CommunicationBetweenModules.shared.post(name: CommunicationMessage.changedFavoriteStatus.rawValue)
+    }
+    
+    func sendNotificationForDataNotFound(){
+        CommunicationBetweenModules.shared.post(name: CommunicationMessage.favoriteGameDetailDataNotFound.rawValue)
     }
 }
