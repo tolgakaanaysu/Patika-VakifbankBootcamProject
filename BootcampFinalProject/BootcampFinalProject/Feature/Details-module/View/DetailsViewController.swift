@@ -8,6 +8,7 @@
 import UIKit
 import SDWebImage
 protocol DetailsViewControllerDelegate: Alert {
+    func dataNotFound()
     func prepareInterfaceComponent(game: GameDetail)
     func changeButtonColor(_ gameIsFavorite: Bool)
 }
@@ -18,7 +19,7 @@ final class DetailsViewController: UIViewController {
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var ratingLabel: UILabel!
     @IBOutlet private weak var textView: UITextView!
-    @IBOutlet private weak var favoriteButton: UIBarButtonItem!
+    @IBOutlet private weak var favoriteButton: UIButton!
     
     //MARK: - Property
     private lazy var viewModel: DetailsViewModelDelegate = DetailsViewModel()
@@ -40,6 +41,13 @@ final class DetailsViewController: UIViewController {
 
 //MARK: - DetailsViewControllerDelegate
 extension DetailsViewController: DetailsViewControllerDelegate {
+    func dataNotFound() {
+        DispatchQueue.main.async { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+            self?.viewModel.sendNotificationForDataNotFound()
+        }
+    }
+    
     func prepareInterfaceComponent(game: GameDetail) {
         nameLabel.text = game.name
         ratingLabel.text = game.rating.toString()
@@ -49,6 +57,6 @@ extension DetailsViewController: DetailsViewControllerDelegate {
     }
     
     func changeButtonColor(_ gameIsFavorite: Bool) {
-        favoriteButton.tintColor = gameIsFavorite ? .systemYellow : .systemGray
+        favoriteButton.tintColor = gameIsFavorite ? .systemRed : .lightGray
     }
 }
