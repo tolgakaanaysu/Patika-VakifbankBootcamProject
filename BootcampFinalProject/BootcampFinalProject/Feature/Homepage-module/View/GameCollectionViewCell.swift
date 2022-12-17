@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SDWebImage
+import Kingfisher
 class GameCollectionViewCell: UICollectionViewCell {
     //MARK: - IBOutlet
     @IBOutlet private weak var backgroundImage: UIImageView!
@@ -36,6 +36,6 @@ class GameCollectionViewCell: UICollectionViewCell {
         ratingLabel.text = "Rate: " + model.rating.toString()
         nameLabel.text = model.name
         let url = URL(string: model.imageUrl)
-        backgroundImage.sd_setImage(with: url,placeholderImage: UIImage(systemName: "photo"))
+        backgroundImage.kf.setImage(with: url,placeholder: UIImage(systemName: "photo"))
     }
 }

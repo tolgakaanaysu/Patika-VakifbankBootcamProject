@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SDWebImage
+import Kingfisher
 protocol DetailsViewControllerDelegate: Alert {
     func dataNotFound()
     func prepareInterfaceComponent(game: GameDetail)
@@ -53,7 +53,7 @@ extension DetailsViewController: DetailsViewControllerDelegate {
         ratingLabel.text = game.rating.toString()
         textView.text = game.descriptionRaw
         let url = URL(string: game.backgroundImageAdditional)
-        imageView.sd_setImage(with: url)
+        imageView.kf.setImage(with: url)
     }
     
     func changeButtonColor(_ gameIsFavorite: Bool) {
