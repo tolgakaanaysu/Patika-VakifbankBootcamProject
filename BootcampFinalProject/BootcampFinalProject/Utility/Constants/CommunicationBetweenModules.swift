@@ -25,5 +25,6 @@ enum CommunicationMessage:String {
     case changedFavoriteStatus = "changedFavoriteStatus"
     case gameDetailDataNotFound = "gameDetailDataNotFound"
     case favoriteGameDetailDataNotFound = "favoriteGameDetailDataNotFound"
+    case noteListChanged = "noteListChanged"
 }
 
