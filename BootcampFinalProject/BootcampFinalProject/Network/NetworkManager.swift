@@ -43,6 +43,17 @@ enum URLSessionDataTaskError: Error {
     case dataParseError
 }
 
+extension URLSessionDataTaskError: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        case .dataParseError:
+            return LocalizableConstant.dataParseError
+        case .noData:
+            return LocalizableConstant.noDataError
+        }
+    }
+}
+
 extension NetworkManager {
     func getAllGames(queryItems: [URLQueryItem], completion: @escaping(Result<[Game],Error>) -> Void){
         let url = Endpoint.getAllGames(queryItems: queryItems).url

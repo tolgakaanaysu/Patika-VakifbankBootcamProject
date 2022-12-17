@@ -9,7 +9,7 @@ import Foundation
 
 
 struct Endpoint {
-    private static let apiKeyItem = URLQueryItem(name: "key", value: "" /*API KEY*/)
+    private static let apiKeyItem = URLQueryItem(name: "key", value: "a670dcc50a3f4dc28ce54a651b5a8ab6" /*API KEY*/)
     private let schema = "https"
     private let host = "api.rawg.io"
     private let prePath = "/api/"

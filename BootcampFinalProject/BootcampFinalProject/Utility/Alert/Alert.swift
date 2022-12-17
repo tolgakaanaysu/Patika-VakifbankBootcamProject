@@ -19,20 +19,24 @@ protocol Alert {
 extension Alert where Self: UIViewController {
     func showErrorAlert(message: String) {
         ProgressHUD.colorBackground = .lightGray
-        ProgressHUD.showError(message)
+        ProgressHUD.colorStatus = .red
+        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 0.2, execute: {
+            ProgressHUD.showError(message)
+        })
     }
     
     func showSuccessAlert(message: String) {
         ProgressHUD.fontStatus = .boldSystemFont(ofSize: 30)
         ProgressHUD.colorBackground = .darkGray
         ProgressHUD.showSuccess(message)
+       
     }
     
     func startProgressAnimating(){
         ProgressHUD.colorBackground = .lightGray
         ProgressHUD.colorAnimation = .blue
         ProgressHUD.animationType = .circleSpinFade
-        ProgressHUD.show()
+        ProgressHUD.show(interaction: false)
     }
         
     func stopAnimating(){

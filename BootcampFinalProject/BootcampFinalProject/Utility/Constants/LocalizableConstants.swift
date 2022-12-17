@@ -20,10 +20,10 @@ struct LocalizableConstant {
     // View Controllers Title
     static let homepageTitle = NSLocalizedString("homepageTitle", comment: "Populer Games")
     static let favoriteListTitle = NSLocalizedString("favoriteListTitle", comment: "My Favorite Games")
+    
+    static let noDataError = NSLocalizedString("noDataError", comment: "Data not found. Plase check network connection")
+    static let dataParseError = NSLocalizedString("dataParseError", comment: "Data not found")
 }
 
 
 
-struct LocalMessage {
-    static let favoriteStatusDidChanged = "changeFavoriteStatus"
-}

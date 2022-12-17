@@ -32,6 +32,8 @@ final class FavoriteListVC: UIViewController {
            guard let destinationVC = segue.destination as? DetailsViewController else { return }
         destinationVC.id = viewModel.selectedFavoriteGame?.integerID
     }
+    
+ 
 }
 
 //MARK: - UITableViewDataSource
@@ -71,7 +73,7 @@ extension FavoriteListVC: FavoriteListVCDelegate {
         favoriteListTableView.delegate = self
         favoriteListTableView.dataSource = self
         favoriteListTableView.register(FavoriteListCell.nib, forCellReuseIdentifier: FavoriteListCell.identifier)
-        self.title = LocalizableConstant.favoriteListTitle
+        navigationItem.title = LocalizableConstant.favoriteListTitle
     }
     
     func tableViewReloadData() {

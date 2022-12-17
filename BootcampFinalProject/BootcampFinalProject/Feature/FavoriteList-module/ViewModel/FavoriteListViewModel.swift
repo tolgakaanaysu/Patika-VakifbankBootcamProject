@@ -30,9 +30,12 @@ final class FavoriListViewModel: FavoriListViewModelInterface {
     
     //MARK: - Lifecycle
     func viewDidLoad(){
+       
         view?.prepareTableView()
         getFavoriteGames()
         favoriteStatusWillChange()
+        favoriteGameDetailDataNotFound()
+       
     }
  
     //MARK: - IBAction methods
@@ -78,7 +81,20 @@ final class FavoriListViewModel: FavoriListViewModelInterface {
     }
     
     private func favoriteStatusWillChange(){
-        //FIXME: Manage notify class
-        NotificationCenter.default.addObserver(self, selector: #selector(getFavoriteGames), name: NSNotification.Name("changeFavoriteStatus"), object: nil)
+        let name = CommunicationMessage.changedFavoriteStatus.rawValue
+        CommunicationBetweenModules.shared.observe(observer: self,
+                                                   name: name,
+                                                   selector: #selector(getFavoriteGames))
     }
+    
+    private func favoriteGameDetailDataNotFound(){
+        let name = CommunicationMessage.favoriteGameDetailDataNotFound.rawValue
+        CommunicationBetweenModules.shared.observe(observer: self, name: name, selector: #selector(showError))
+    }
+    
+    @objc private func showError(){
+        view?.showErrorAlert(message: LocalizableConstant.dataParseError)
+    }
+    
+    
 }

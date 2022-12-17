@@ -124,7 +124,7 @@ extension HomepageViewController: UICollectionViewDelegate {
 extension HomepageViewController: HomepageViewControllerDelegate {
     func prepareComponents() {
         view.backgroundColor = .systemGray3
-        title = "Popüler Games"
+        navigationItem.title = LocalizableConstant.homepageTitle
         prepareCollectionView()
         prepareSearchController()
     }
