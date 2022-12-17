@@ -17,3 +17,18 @@ extension SeguePerformable where Self: UIViewController {
     }
 }
 
+protocol NavigationDelegate {
+    func pushViewController(with viewControllerID: String)
+    func popViewController()
+}
+
+extension NavigationDelegate where Self: UIViewController {
+    func pushViewController(with viewControllerID: String) {
+        let viewController = storyboard!.instantiateViewController(identifier: viewControllerID)
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func popViewController(){
+        navigationController?.popViewController(animated: true)
+    }
+}
