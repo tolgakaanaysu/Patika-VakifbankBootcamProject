@@ -42,7 +42,7 @@ final class NoteListViewModel: NoteListViewModelDelegate {
     }
     
     func didSelectRowAt(at indexPath: IndexPath) {
-        let note = noteList[indexPath.row]
+//        let note = noteList[indexPath.row]
         //TODO: perform segue
         
     }

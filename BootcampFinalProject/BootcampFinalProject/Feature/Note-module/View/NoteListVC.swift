@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol NoteListVCDelegate: AnyObject, Alert, NavigationDelegate {
+protocol NoteListVCDelegate: AnyObject, Alert, NavigationPushable {
     func prepareTableView()
     func tableViewReloadData()
 }
@@ -33,7 +33,7 @@ extension NoteListVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let note = viewModel.cellForRowAt(at: indexPath)
+//        let note = viewModel.cellForRowAt(at: indexPath)
         //TODO: cell
         return .init()
     }

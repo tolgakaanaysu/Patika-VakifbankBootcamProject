@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 struct LocalizableConstant {
     // Homepage action sheet
     static let menuActionSheetMessage = NSLocalizedString("menuActionSheetMessage", comment: "Please choise one item")

@@ -95,6 +95,4 @@ final class FavoriListViewModel: FavoriListViewModelInterface {
     @objc private func showError(){
         view?.showErrorAlert(message: LocalizableConstant.dataParseError)
     }
-    
-    
 }

@@ -32,8 +32,6 @@ final class FavoriteListVC: UIViewController {
            guard let destinationVC = segue.destination as? DetailsViewController else { return }
         destinationVC.id = viewModel.selectedFavoriteGame?.integerID
     }
-    
- 
 }
 
 //MARK: - UITableViewDataSource

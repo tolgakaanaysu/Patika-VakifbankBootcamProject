@@ -86,13 +86,13 @@ extension CoreDataCustomError: Error {
     var message: String {
         switch self {
         case .loadError:
-            return "Failed to load Games from core data"
+            return "Failed to load"
         case .saveError:
-            return "Failed to save Game to core data"
+            return "Failed to save"
         case .updateError:
-            return "Failed to update Game"
+            return "Failed to update"
         case .deleteError:
-            return "Failed to delete Game from core data"
+            return "Failed to delete"
         }
     }
 }
@@ -107,11 +107,11 @@ extension CoreDataCustomSuccesMessage {
     var message: String {
         switch self {
         case .saveSuccess:
-            return "Game saved successfully"
+            return "Successfully saved"
         case .updateSucces:
-            return "Game edited successfully"
+            return "Successfully edited"
         case .deleteSucces:
-            return "Game deleted successfully"
+            return "Successfully deleted"
         }
     }
 }
