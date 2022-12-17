@@ -14,6 +14,7 @@ protocol NoteListViewModelDelegate {
     func numberOfRowsInSection() -> Int
     func cellForRowAt(at indexPath: IndexPath) -> Note
     func didSelectRowAt(at indexPath: IndexPath)
+    func trailingSwipeActionsConfigurationForRowAt(at indexPath: IndexPath)
     
 }
 
@@ -30,6 +31,7 @@ final class NoteListViewModel: NoteListViewModelDelegate {
     func viewDidLoad() {
         view?.prepareTableView()
         getAllNote()
+        observeNote()
     }
     
     //MARK: - TableViewMethods
@@ -42,13 +44,18 @@ final class NoteListViewModel: NoteListViewModelDelegate {
     }
     
     func didSelectRowAt(at indexPath: IndexPath) {
-//        let note = noteList[indexPath.row]
-        //TODO: perform segue
-        
+        let note = noteList[indexPath.row]
+        view?.preparePresent(note: note)
+    }
+    
+    func trailingSwipeActionsConfigurationForRowAt(at indexPath: IndexPath) {
+        let note = noteList[indexPath.row]
+        deleteNote(note: note)
+       
     }
     
     //MARK: - Private Methods
-    private func getAllNote(){
+    @objc private func getAllNote(){
         CoreDataNoteClient.shared.getAllNote { [weak self] result in
             switch result {
             case .success(let notes):
@@ -58,11 +65,22 @@ final class NoteListViewModel: NoteListViewModelDelegate {
             }
         }
     }
-}
-
-//MARK: - AddNoteButtonViewDelegate
-extension NoteListViewModel: AddNoteButtonViewDelegate {
-    func pushViewController() {
-        view?.pushViewController(with: "")
+    
+    private func deleteNote(note: Note){
+        CoreDataNoteClient.shared.deleteNote(note: note) { [weak self] result in
+            switch result {
+            case .success(let success):
+                self?.view?.showSuccessAlert(message: success.message)
+                self?.getAllNote()
+            case .failure(let error):
+                self?.view?.showErrorAlert(message: error.message)
+            }
+        }
+    }
+    
+    private func observeNote(){
+        CommunicationBetweenModules.shared.observe(observer: self,
+                                                   name: CommunicationMessage.noteListChanged.rawValue,
+                                                   selector: #selector(getAllNote))
     }
 }

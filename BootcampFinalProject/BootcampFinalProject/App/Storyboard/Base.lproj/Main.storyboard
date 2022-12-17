@@ -57,7 +57,7 @@
         <!--Details View Controller-->
         <scene sceneID="2Vg-3i-Ua0">
             <objects>
-                <viewController modalPresentationStyle="overFullScreen" hidesBottomBarWhenPushed="YES" id="56U-Ze-CF3" customClass="DetailsViewController" customModule="BootcampFinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailsViewController" modalPresentationStyle="overFullScreen" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="56U-Ze-CF3" customClass="DetailsViewController" customModule="BootcampFinalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="T15-vO-gOe">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="761"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -192,7 +192,7 @@
         <!--Favorite ListVC-->
         <scene sceneID="Eao-BH-174">
             <objects>
-                <viewController id="2Ki-jP-qKI" customClass="FavoriteListVC" customModule="BootcampFinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FavoriteListVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2Ki-jP-qKI" customClass="FavoriteListVC" customModule="BootcampFinalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TtI-7N-Uqe">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="761"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -226,7 +226,7 @@
         <scene sceneID="BVj-DH-irT">
             <objects>
                 <viewController id="XFM-gN-j3q" customClass="NoteListVC" customModule="BootcampFinalProject" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="9Tm-up-DOp">
+                    <view key="view" userInteractionEnabled="NO" contentMode="scaleToFill" id="9Tm-up-DOp">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="761"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -255,10 +255,109 @@
                             </hierarchicalColors>
                         </imageReference>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="noteTableView" destination="COf-pK-GwM" id="Ycl-ia-Dm7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D3a-yE-J2N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1181.5384615384614" y="1488.6255924170616"/>
+        </scene>
+        <!--Add New NoteVC-->
+        <scene sceneID="7qw-oY-xEI">
+            <objects>
+                <viewController storyboardIdentifier="AddNewNoteVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="adE-Dh-r2r" customClass="AddNewNoteVC" customModule="BootcampFinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4Yh-mh-qbd">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cfX-Pi-c8x">
+                                <rect key="frame" x="16" y="308" width="358" height="395"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Game Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZcQ-2P-xZU">
+                                <rect key="frame" x="16" y="144" width="358" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qXG-Jq-flv">
+                                <rect key="frame" x="16" y="210" width="358" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="M2h-it-TJ1">
+                                <rect key="frame" x="57.666666666666657" y="739" width="275" height="39"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ii-zK-f7J">
+                                        <rect key="frame" x="0.0" y="0.0" width="132.66666666666666" height="39"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="SAVE">
+                                            <fontDescription key="titleFontDescription" name=".SFUI-Semibold" family=".AppleSystemUIFont" pointSize="22"/>
+                                            <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="saveButtonClicked:" destination="adE-Dh-r2r" eventType="touchUpInside" id="74q-pX-uVK"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Tt1-6p-MPV">
+                                        <rect key="frame" x="142.66666666666663" y="0.0" width="132.33333333333337" height="39"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="EDIT">
+                                            <fontDescription key="titleFontDescription" name=".SFUI-Semibold" family=".AppleSystemUIFont" pointSize="22"/>
+                                            <color key="baseBackgroundColor" systemColor="systemOrangeColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="editButtonClicked:" destination="adE-Dh-r2r" eventType="touchUpInside" id="SeX-7o-D8l"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="275" id="sTO-3p-e55"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add New Note" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6x-Ay-qgd">
+                                <rect key="frame" x="64" y="63" width="262" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" systemColor="systemGreenColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="qgA-kN-nRF"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qXG-Jq-flv" firstAttribute="top" secondItem="ZcQ-2P-xZU" secondAttribute="bottom" constant="32" id="6Ms-Pb-OCE"/>
+                            <constraint firstItem="cfX-Pi-c8x" firstAttribute="top" secondItem="qXG-Jq-flv" secondAttribute="bottom" constant="64" id="78S-da-jy8"/>
+                            <constraint firstItem="qgA-kN-nRF" firstAttribute="trailing" secondItem="cfX-Pi-c8x" secondAttribute="trailing" constant="16" id="9Yp-Y6-qGx"/>
+                            <constraint firstItem="M2h-it-TJ1" firstAttribute="centerX" secondItem="4Yh-mh-qbd" secondAttribute="centerX" id="Dr0-xw-UWW"/>
+                            <constraint firstItem="H6x-Ay-qgd" firstAttribute="leading" secondItem="qgA-kN-nRF" secondAttribute="leading" constant="64" id="Gxe-r1-UIQ"/>
+                            <constraint firstItem="qgA-kN-nRF" firstAttribute="trailing" secondItem="H6x-Ay-qgd" secondAttribute="trailing" constant="64" id="O3h-In-WN2"/>
+                            <constraint firstItem="H6x-Ay-qgd" firstAttribute="top" secondItem="qgA-kN-nRF" secondAttribute="top" constant="16" id="cdz-hx-X5F"/>
+                            <constraint firstItem="qXG-Jq-flv" firstAttribute="leading" secondItem="qgA-kN-nRF" secondAttribute="leading" constant="16" id="cnb-fk-CPH"/>
+                            <constraint firstItem="ZcQ-2P-xZU" firstAttribute="top" secondItem="H6x-Ay-qgd" secondAttribute="bottom" constant="45" id="e9g-62-s4m"/>
+                            <constraint firstItem="M2h-it-TJ1" firstAttribute="top" secondItem="cfX-Pi-c8x" secondAttribute="bottom" constant="36" id="mLH-ET-Dv1"/>
+                            <constraint firstItem="qgA-kN-nRF" firstAttribute="trailing" secondItem="ZcQ-2P-xZU" secondAttribute="trailing" constant="16" id="qFp-nd-VRA"/>
+                            <constraint firstItem="ZcQ-2P-xZU" firstAttribute="leading" secondItem="qgA-kN-nRF" secondAttribute="leading" constant="16" id="sf6-pX-2Xq"/>
+                            <constraint firstItem="qgA-kN-nRF" firstAttribute="trailing" secondItem="qXG-Jq-flv" secondAttribute="trailing" constant="16" id="tom-78-6ul"/>
+                            <constraint firstItem="qgA-kN-nRF" firstAttribute="bottom" secondItem="M2h-it-TJ1" secondAttribute="bottom" constant="32" id="wj6-Q6-I72"/>
+                            <constraint firstItem="cfX-Pi-c8x" firstAttribute="leading" secondItem="qgA-kN-nRF" secondAttribute="leading" constant="16" id="ySO-FS-hS9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="editButton" destination="Tt1-6p-MPV" id="1Cf-1r-HHp"/>
+                        <outlet property="gameNameTextField" destination="ZcQ-2P-xZU" id="28i-cT-L7c"/>
+                        <outlet property="noteTextLabel" destination="cfX-Pi-c8x" id="rup-Z0-Wev"/>
+                        <outlet property="noteTitleTextField" destination="qXG-Jq-flv" id="Ooe-QK-sfH"/>
+                        <outlet property="saveButton" destination="5Ii-zK-f7J" id="uGT-my-4PN"/>
+                        <outlet property="titleLabel" destination="H6x-Ay-qgd" id="uVL-iK-jgk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XhQ-Ms-kQY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1992.3076923076922" y="1488.6255924170616"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="lol-6N-aiV">
@@ -285,7 +384,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="9AN-Ua-bOC"/>
+        <segue reference="2VN-De-6Xx"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="book" catalog="system" width="128" height="99"/>
@@ -312,6 +411,9 @@
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
