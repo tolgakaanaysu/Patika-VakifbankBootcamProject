@@ -226,7 +226,7 @@
         <scene sceneID="BVj-DH-irT">
             <objects>
                 <viewController id="XFM-gN-j3q" customClass="NoteListVC" customModule="BootcampFinalProject" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" userInteractionEnabled="NO" contentMode="scaleToFill" id="9Tm-up-DOp">
+                    <view key="view" contentMode="scaleToFill" id="9Tm-up-DOp">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="761"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

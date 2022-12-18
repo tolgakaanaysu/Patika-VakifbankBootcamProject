@@ -95,6 +95,6 @@ extension NoteListVC: NoteListVCDelegate {
 
 extension NoteListVC: AddNoteButtonViewDelegate {
     func pushViewController() {
-        present(with: "AddNewNoteVC")
+        present(with: AddNewNoteVC.identifier)
     }
 }

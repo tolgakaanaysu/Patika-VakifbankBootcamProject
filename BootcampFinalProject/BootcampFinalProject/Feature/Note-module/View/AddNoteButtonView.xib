@@ -25,7 +25,7 @@
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal" backgroundImage="plus.circle.fill" catalog="system"/>
                     <connections>
-                        <action selector="addButtonClicked:" destination="-1" eventType="touchUpInside" id="Odh-2F-Qx9"/>
+                        <action selector="addButtonClicked:" destination="-1" eventType="touchUpInside" id="KNK-ak-jPy"/>
                     </connections>
                 </button>
             </subviews>
