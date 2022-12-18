@@ -1,0 +1,42 @@
+
+/* Class = "UIButton"; configuration.title = "SAVE"; ObjectID = "5Ii-zK-f7J"; */
+"5Ii-zK-f7J.configuration.title" = "Kaydet";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "5Ii-zK-f7J"; */
+"5Ii-zK-f7J.normalTitle" = "Button";
+
+/* Class = "UITextView"; text = "-"; ObjectID = "GQX-Dc-ZGt"; */
+"GQX-Dc-ZGt.text" = "-";
+
+/* Class = "UILabel"; text = "Add New Note"; ObjectID = "H6x-Ay-qgd"; */
+"H6x-Ay-qgd.text" = "Yeni Not Ekle";
+
+/* Class = "UITabBarItem"; title = "Games"; ObjectID = "Nf8-br-AJr"; */
+"Nf8-br-AJr.title" = "Oyunlar";
+
+/* Class = "UIButton"; configuration.title = "EDIT"; ObjectID = "Tt1-6p-MPV"; */
+"Tt1-6p-MPV.configuration.title" = "Düzenle";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Tt1-6p-MPV"; */
+"Tt1-6p-MPV.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "Game Name"; ObjectID = "ZcQ-2P-xZU"; */
+"ZcQ-2P-xZU.placeholder" = "Oyun Adı";
+
+/* Class = "UITabBarItem"; title = "Notes"; ObjectID = "bFi-5S-nOQ"; */
+"bFi-5S-nOQ.title" = "Notlar";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "i6u-lJ-edL"; */
+"i6u-lJ-edL.text" = "-";
+
+/* Class = "UITabBarItem"; title = "Favorites"; ObjectID = "kRt-HC-mqb"; */
+"kRt-HC-mqb.title" = "Favoriler";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "l95-II-pjg"; */
+"l95-II-pjg.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "Title"; ObjectID = "qXG-Jq-flv"; */
+"qXG-Jq-flv.placeholder" = "Title";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "uZb-HI-waO"; */
+"uZb-HI-waO.text" = "-";

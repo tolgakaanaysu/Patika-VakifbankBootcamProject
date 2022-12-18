@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  BootcampFinalProject
+
+  Created by Tolga Kağan Aysu on 16.12.2022.
+  
+*/
+
+"menuActionSheetMessage" = "Filtrelemek istediğiniz butona tıklayın";
+"menuActionSheetTitle" = "Filtre";
+"searchBarPlaceholder" = "Aramak için yazın";

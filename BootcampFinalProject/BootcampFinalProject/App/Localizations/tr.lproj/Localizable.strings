@@ -1,0 +1,26 @@
+/* 
+  Localizable.strings
+  BootcampFinalProject
+
+  Created by Tolga Kağan Aysu on 16.12.2022.
+  
+*/
+
+
+//MARK: - Action Sheet
+"menuActionSheetMessage" = "Filtrelemek istediğiniz butona tıklayın";
+"menuActionSheetTitle" = "Filtre";
+"menuButtonNameItem" = "İsim";
+"menuButtonRatingItem" = "Puan";
+"menuButtonFavoriteItem" = "Popüler";
+
+//MARK: - Searchbar
+"searchBarPlaceholder" = "Aramak için yazın";
+
+//MARK: - ViewControllers Title
+"favoriteListTitle" = "Favori Oyunlarım";
+"noteListTitle" = "Notlarım ";
+
+//MARK: - Network Error
+"noDataError" = "Veri alınamadı. Lütfen internet bağlantınızı kontrol edin";
+"dataParseError" = "Veri alınamadı";
