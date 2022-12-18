@@ -106,7 +106,7 @@ extension HomepageViewController: UICollectionViewDataSource {
             print("xib not found")
             return .init()
         }
-        guard let game = viewModel.cellForItemAt(at: indexPath) else { return .init() }
+        guard let game = viewModel.cellForItemAt(at: indexPath.row) else { return .init() }
         
         cell.configureCell(with: game)
         return cell
@@ -116,7 +116,7 @@ extension HomepageViewController: UICollectionViewDataSource {
 //MARK: - UICollectionViewDelegate
 extension HomepageViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.didSelectItemAt(at: indexPath)
+        viewModel.didSelectItemAt(at: indexPath.row)
     }
 }
 

@@ -12,8 +12,8 @@ protocol HomepageViewModelDelegate {
     
     func viewDidLoad()
     func numberOfItemsInSection() -> Int
-    func cellForItemAt(at indexPath: IndexPath) -> Game?
-    func didSelectItemAt(at indexPath: IndexPath)
+    func cellForItemAt(at index: Int) -> Game?
+    func didSelectItemAt(at index: Int)
     func updateSearchResults(text: String?)
     func getGameID() -> Int?
     func getGameOrdering(with queryValue: String)
@@ -54,13 +54,13 @@ final class HomepageViewModel: HomepageViewModelDelegate {
         filteredGameList.count
     }
     
-    func cellForItemAt(at indexPath: IndexPath) -> Game? {
-        filteredGameList[indexPath.row]
+    func cellForItemAt(at index: Int) -> Game? {
+        filteredGameList[index]
     }
     
     //MARK: - CollectionViewDelegateMethods
-    func didSelectItemAt(at indexPath: IndexPath) {
-        self.id = filteredGameList[indexPath.row].id
+    func didSelectItemAt(at index: Int) {
+        self.id = filteredGameList[index].id
         view?.performSegue(identifier: Identifiers.homepageVCToDetailsVC)
     }
     
@@ -80,7 +80,7 @@ final class HomepageViewModel: HomepageViewModelDelegate {
     }
     
     //MARK: - Private Methods
-    private func getAllGames(queryItems: [URLQueryItem] = []){
+    func getAllGames(queryItems: [URLQueryItem] = []){
         view?.startProgressAnimating()
         NetworkManager.shared.getAllGames(queryItems: queryItems) {[weak self] result in
             guard let self else { return }

@@ -43,7 +43,7 @@ extension FavoriteListVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteListCell.identifier,
                                                        for: indexPath) as? FavoriteListCell else { return .init() }
-        let favoriGame = viewModel.cellForRowItem(at: indexPath)
+        let favoriGame = viewModel.cellForRowItem(at: indexPath.row)
         cell.configureCell(with: favoriGame)
         return cell
     }
@@ -52,13 +52,13 @@ extension FavoriteListVC: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 extension FavoriteListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.didSelectRowAt(at: indexPath)
+        viewModel.didSelectRowAt(at: indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let deleteButton = UIContextualAction(style: .destructive, title: "DELETE") {[weak self] action, view, bool in
-            self?.viewModel.deleteButtonAction(at: indexPath)
+            self?.viewModel.deleteButtonAction(at: indexPath.row)
         }
         return UISwipeActionsConfiguration(actions: [deleteButton])
     }

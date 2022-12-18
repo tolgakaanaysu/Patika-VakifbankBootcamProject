@@ -12,16 +12,16 @@ protocol FavoriListViewModelInterface {
     
     func viewDidLoad()
     func numberOfRowsInSection() -> Int
-    func cellForRowItem(at indexPath: IndexPath) -> FavoriteGame
-    func didSelectRowAt(at indexPath: IndexPath)
-    func deleteButtonAction(at indexPath: IndexPath)
+    func cellForRowItem(at index: Int) -> FavoriteGame
+    func didSelectRowAt(at index: Int)
+    func deleteButtonAction(at index: Int)
 }
 
 final class FavoriListViewModel: FavoriListViewModelInterface {
     //MARK: - Property
     var view: FavoriteListVCDelegate?
     var selectedFavoriteGame: FavoriteGame?
-    var favoriteGames = [FavoriteGame]() {
+    private var favoriteGames = [FavoriteGame]() {
         didSet{
             view?.tableViewReloadData()
             debugPrint(favoriteGames.count)
@@ -39,8 +39,8 @@ final class FavoriListViewModel: FavoriListViewModelInterface {
     }
  
     //MARK: - IBAction methods
-    func deleteButtonAction(at indexPath: IndexPath) {
-        let favoriGame = favoriteGames[indexPath.row]
+    func deleteButtonAction(at index: Int) {
+        let favoriGame = favoriteGames[index]
         CoreDataFavoriGameClient.shared.deleteFavoriGame(id: favoriGame.id!) { [weak self] result in
             switch result {
             case .success(let success):
@@ -57,19 +57,19 @@ final class FavoriListViewModel: FavoriListViewModelInterface {
         favoriteGames.count
     }
     
-    func cellForRowItem(at indexPath: IndexPath) -> FavoriteGame {
-        favoriteGames[indexPath.row]
+    func cellForRowItem(at index: Int) -> FavoriteGame {
+        favoriteGames[index]
     }
     
     //MARK: - TableViewDelegeteMethods
-    func didSelectRowAt(at indexPath: IndexPath) {
-        selectedFavoriteGame = favoriteGames[indexPath.row]
+    func didSelectRowAt(at index: Int) {
+        selectedFavoriteGame = favoriteGames[index]
         guard selectedFavoriteGame != nil else { return }
         view?.performSegue(identifier: Identifiers.favoriteListVCToDetailsVC)
     }
     
     //MARK: - Private methods
-    @objc private func getFavoriteGames(){
+    @objc  func getFavoriteGames(){
         CoreDataFavoriGameClient.shared.getAllFavoriteGame { [weak self] result in
             switch result {
             case .success(let favoriteGames):
