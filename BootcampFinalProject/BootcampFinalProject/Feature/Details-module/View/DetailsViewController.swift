@@ -7,7 +7,7 @@
 
 import UIKit
 import Kingfisher
-protocol DetailsViewControllerDelegate: Alert {
+protocol DetailsViewControllerDelegate: Alert, NavigationPushable {
     func dataNotFound()
     func prepareInterfaceComponent(game: GameDetail)
     func changeButtonColor(_ gameIsFavorite: Bool)
@@ -44,7 +44,6 @@ extension DetailsViewController: DetailsViewControllerDelegate {
     func dataNotFound() {
         DispatchQueue.main.async { [weak self] in
             self?.navigationController?.popViewController(animated: true)
-            self?.viewModel.sendNotificationForDataNotFound()
         }
     }
     
