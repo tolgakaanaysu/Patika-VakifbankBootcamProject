@@ -1,59 +1,37 @@
-# final-project
 
-Vakıfbank IOS Swift Bootcamp Bitirme Projesi
 
-Genel Detaylar:
-3 ana ekrandan oluşan public API tabanlı bir uygulaması yapılması beklenmektedir.(API
-sonradan kararlaştırılacaktır.)
-Aşağıda yazılmış olan tüm maddeler ideal uygulamayı tarif etmekle beraber; herkes
-başardığı özelliklere göre değerlendirilecektir.
-Yapılmış maddelerin başarılı uygulanmış olması tüm maddeleri tamamlamaktan daha
-önemlidir.
-Git Kullanımı:
-- Uygulama github.com sayfasına public repo olarak yüklenmelidir.
-- Git commitleri atomic olmalı ve genel commit mesajları kurallarına dikkat
-edilmelidir. - Commit mesajları atılırken branch yapısına dikkat edilmelidir.
-(Develop, Feature vb. branch’ler oluşturulmalıdır.)
-1. Ekran: (Liste Ekranı)
-- MVVM pattern’i ile yazılmalıdır.
-- Item’lar arasında arama yapılabilmelidir.
-- Item’ları sıralama butonu ile sıralanabilmelidir.
-- Sadece item’lar güncellendiğinde görünüm güncellenmelidir. (Ekrana her
-girişte güncelleme olmamalı)
-2. Ekran: (Detay Ekranı)
-- MVVM pattern’i ile yazılmalıdır.
-- Item’a basıldığında ilgili detaya yönlenmelidir.(Alanlar belirtilecektir.)
-- Edit işlemleri için aynı ekran kullanılacaktır.
-- Düzenlemede tüm alanlar eklenmemişse item kaydedilmemelidir.
-3. Ekran: (Yeni Giriş Ekranı)
-- MVVM pattern’i ile yazılmalıdır.
-- Ekran present şekilde açılmalıdır.
-- Ekleme tüm alanlar eklenmemişse item kaydedilmemelidir.
-Uygulama gereklilikleri:
-- SPM veya Cocoapods kullanılmalıdır.
-- Uygulamada hata mesajları ve bekleme esnasında activity indicator
+# Vakıfbank IOS Swift Bootcamp Bitirme Projesi
 
-kullanılmalıdır.. - İşlemler CoreData ile yapılmalıdır.
-- CoreData’ya bir CoreDataManager üzerinden erişilmelidir.
-- Local push entegrasyonu sağlanmalıdır.
-- Notification yönetimi bir localNotificationManager aracılığıyla
-yapılmalıdır. - Localization sağlanmalıdır.
-- ViewModel localNotificationManager’a notificationManager protokolü üzerinden
-erişmelidir.
-- Uygulamanın unit test yaklaşımı ve coverage yüzdesi değerlendirme kriterleri
-arasındadır.
-- UI ve animasyon tamamen tercihe bağlı olup farklı cihaz görünümleri
-gözetilmelidir.
+## IMAGES
 
-1- API - https://rawg.io/apidocs - Dokümantasyon Chrome ile açılmalıdır.
-2- Git reposu public gözüküyor ancak ödevler nasıl yükleniyorsa aynı sistem kullanılacaktır.
-3- ReadMe dosyası repoda olmalıdır.
-4- Liste ekranı için istenilen filtre kullanılabilir(2022 de çıkan oyunlar, platforma özel
-oyunlar veya popüler oyunlar olabilir.)
-5- Detay ekranında Fotoğraf ve en az 4 bilgi olacak.
-6- Listeden detaya gidildiğinde favorilere ekleme olacak başka bir editleme olmayacak.(2.
-Ekrandaki editleme maddesi)
-7- Favorilerin listelendiği bir ekran olacak.
-8- Liste şeklinde Notlar ekranı olacak. Oyunlara ait not ekleyebileceğim ve mevcut notları
-düzenleyebileceğim.(Dokümandaki 3. Ekran Yeni giriş ekranı bu kısımda olacak)
-9- Hatalar yakalanmalı ve alert şeklinde gösterilmelidir.
+<img width="217" alt="add employee" src="https://user-images.githubusercontent.com/59265478/208317905-b76d0af6-9d4d-4d57-aa94-d1077132a33b.png"> <img width="217" alt="add employee" src="https://user-images.githubusercontent.com/59265478/208317898-700e1942-db97-4fbf-9a8b-164aa13e1310.png"> <img width="217" alt="add employee" src="https://user-images.githubusercontent.com/59265478/208317915-fedae61a-d890-44f6-b059-6066ca63cba7.png"> <img width="217" alt="add employee" src="https://user-images.githubusercontent.com/59265478/208317910-0ee4c53d-87bd-4cfa-860b-3187b01e7931.png"> <img width="217" alt="add employee" src="https://user-images.githubusercontent.com/59265478/208318225-76173809-bfeb-4838-8e49-fab86adf3102.png"> <img width="217" alt="add employee" src="https://user-images.githubusercontent.com/59265478/208318888-cef6685b-7e67-4314-8166-f71babaf8fc4.png"> <img width="217" alt="add employee" src="https://user-images.githubusercontent.com/59265478/208318889-3b3621d4-2694-4fc7-83f7-71ea57e1d986.png">
+
+
+## Requirements
+  - iOS16+
+  - Xcode 14.0.1
+
+## Tools
+
+#### Swift
+  - Delegate
+  - Closure
+  - POP
+  - OOP
+  - Date
+  - Memory Management
+  - Localizations
+  
+#### UIKit
+  - CollectionView
+  - TableView
+  - Auto Layout
+  - TabBar
+  - Navigation Controller
+  
+#### Design Pattern Architecture
+  - MVVM 
+  
+#### Network
+  - Games Api: https://rawg.io/apidocs
+  - CoreData
