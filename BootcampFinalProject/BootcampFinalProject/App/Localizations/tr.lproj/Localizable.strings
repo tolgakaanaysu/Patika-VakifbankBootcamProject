@@ -10,6 +10,9 @@
 //MARK: - Action Sheet
 "menuActionSheetMessage" = "Filtrelemek istediğiniz butona tıklayın";
 "menuActionSheetTitle" = "Filtre";
+"menuButtonNameItem" = "İsim";
+"menuButtonRatingItem" = "Puan";
+"menuButtonFavoriteItem" = "Popüler";
 
 //MARK: - Searchbar
 "searchBarPlaceholder" = "Aramak için yazın";

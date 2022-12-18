@@ -37,7 +37,7 @@ final class AddNewNoteVC: UIViewController {
     
     //MARK: - IBAction method
     @IBAction func saveButtonClicked(_ sender: UIButton) {
-        checkTextFields()
+        guard  checkTextFields() == true else { return }
         
         let newNote = NewNote(id: UUID().uuidString,
                               gameName: gameNameTextField.text!,
@@ -47,11 +47,11 @@ final class AddNewNoteVC: UIViewController {
     }
     
     @IBAction func editButtonClicked(_ sender: UIButton) {
-        checkTextFields()
+        guard  checkTextFields() == true else { return }
         
     }
     
-    private func checkTextFields(){
+    private func checkTextFields() -> Bool {
         guard !noteTextLabel.text.isNilOrEmpty,
               !noteTitleTextField.text.isNilOrEmpty,
               !gameNameTextField.text.isNilOrEmpty else {
@@ -62,8 +62,9 @@ final class AddNewNoteVC: UIViewController {
             gameNameTextField.layer.borderColor = UIColor.red.cgColor
             noteTitleTextField.layer.borderColor = UIColor.red.cgColor
             noteTextLabel.layer.borderColor = UIColor.red.cgColor
-            return
+            return false
         }
+        return true
     }
 }
 
