@@ -12,9 +12,9 @@ protocol NoteListViewModelDelegate {
     
     func viewDidLoad()
     func numberOfRowsInSection() -> Int
-    func cellForRowAt(at indexPath: IndexPath) -> Note
-    func didSelectRowAt(at indexPath: IndexPath)
-    func trailingSwipeActionsConfigurationForRowAt(at indexPath: IndexPath)
+    func cellForRowAt(at index: Int) -> Note
+    func didSelectRowAt(at index: Int)
+    func trailingSwipeActionsConfigurationForRowAt(at index: Int)
     
 }
 
@@ -39,23 +39,23 @@ final class NoteListViewModel: NoteListViewModelDelegate {
         noteList.count
     }
     
-    func cellForRowAt(at indexPath: IndexPath) -> Note {
-        noteList[indexPath.row]
+    func cellForRowAt(at index: Int) -> Note {
+        noteList[index]
     }
     
-    func didSelectRowAt(at indexPath: IndexPath) {
-        let note = noteList[indexPath.row]
+    func didSelectRowAt(at index: Int) {
+        let note = noteList[index]
         view?.preparePresent(note: note)
     }
     
-    func trailingSwipeActionsConfigurationForRowAt(at indexPath: IndexPath) {
-        let note = noteList[indexPath.row]
+    func trailingSwipeActionsConfigurationForRowAt(at index: Int) {
+        let note = noteList[index]
         deleteNote(note: note)
        
     }
     
     //MARK: - Private Methods
-    @objc private func getAllNote(){
+    @objc func getAllNote(){
         CoreDataNoteClient.shared.getAllNote { [weak self] result in
             switch result {
             case .success(let notes):
@@ -70,8 +70,9 @@ final class NoteListViewModel: NoteListViewModelDelegate {
         CoreDataNoteClient.shared.deleteNote(note: note) { [weak self] result in
             switch result {
             case .success(let success):
-                self?.view?.showSuccessAlert(message: success.message)
                 self?.getAllNote()
+                self?.view?.showSuccessAlert(message: success.message)
+                
             case .failure(let error):
                 self?.view?.showErrorAlert(message: error.message)
             }

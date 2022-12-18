@@ -48,7 +48,7 @@ extension NoteListVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NoteListCell.identifier, for: indexPath) as? NoteListCell else { return .init() }
-        let note = viewModel.cellForRowAt(at: indexPath)
+        let note = viewModel.cellForRowAt(at: indexPath.row)
         cell.configureCell(with: note)
         return cell
     }
@@ -56,7 +56,7 @@ extension NoteListVC: UITableViewDataSource {
 
 extension NoteListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.didSelectRowAt(at: indexPath)
+        viewModel.didSelectRowAt(at: indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -66,7 +66,7 @@ extension NoteListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let deleteButton = UIContextualAction(style: .destructive, title: "DELETE") {[weak self] action, view, bool in
-            self?.viewModel.trailingSwipeActionsConfigurationForRowAt(at: indexPath)
+            self?.viewModel.trailingSwipeActionsConfigurationForRowAt(at: indexPath.row)
         }
         return UISwipeActionsConfiguration(actions: [deleteButton])
     }
