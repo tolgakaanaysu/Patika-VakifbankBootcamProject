@@ -21,3 +21,31 @@ struct Game: Decodable {
     }
 }
 
+enum MenuButtonList {
+    case name
+    case rating
+    case favorite
+}
+
+extension MenuButtonList {
+    var searh: String {
+        switch self {
+        case .name:
+            return "-name"
+        case .rating:
+            return "-rating"
+        case .favorite:
+            return ""
+        }
+    }
+    var title: String {
+        switch self {
+        case .name:
+            return LocalizableConstant.menuButtonNameItem
+        case .rating:
+            return LocalizableConstant.menuButtonRatingItem
+        case .favorite:
+            return LocalizableConstant.favoriteListTitle
+        }
+    }
+}

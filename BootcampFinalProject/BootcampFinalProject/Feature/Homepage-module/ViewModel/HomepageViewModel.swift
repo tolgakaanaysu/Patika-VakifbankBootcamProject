@@ -96,9 +96,3 @@ final class HomepageViewModel: HomepageViewModelDelegate {
         }
     }
 }
-
-class GameSortingType {
-    static let name = "-name"
-    static let rating = "-rating"
-    static let updated = "-updated"
-}

@@ -10,11 +10,19 @@
 //MARK: - Action Sheet
 "menuActionSheetMessage" = "Choose one item";
 "menuActionSheetTitle" = "Filter";
+"menuButtonNameItem" = "Name";
+"menuButtonRatingItem" = "Rating";
+"menuButtonFavoriteItem" = "Favorite";
+
+
 
 //MARK: - Searchbar
 "searchBarPlaceholder" = "Type something to search";
 
 //MARK: - ViewControllers Title
-"homepageTitle" = "Populer Games";
-"favoriteListTitle" = "Favorites";
+"favoriteListTitle" = "My Favorites";
+"noteListTitle" = "My Notes";
 
+//MARK: - Network Error
+"noDataError" = "Data not found. Plase check network connection";
+"dataParseError" = "Data not found";

@@ -76,6 +76,7 @@ extension NoteListVC: UITableViewDelegate {
 extension NoteListVC: NoteListVCDelegate {
     
     func prepareTableView() {
+        navigationItem.title = LocalizableConstant.noteListTitle
         noteTableView.delegate = self
         noteTableView.dataSource = self
         noteTableView.register(NoteListCell.nib, forCellReuseIdentifier: NoteListCell.identifier)

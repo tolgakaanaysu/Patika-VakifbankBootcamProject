@@ -15,6 +15,9 @@
 "searchBarPlaceholder" = "Aramak için yazın";
 
 //MARK: - ViewControllers Title
-"homepageTitle" = "Popüler Oyunlar";
 "favoriteListTitle" = "Favori Oyunlarım";
+"noteListTitle" = "Notlarım ";
 
+//MARK: - Network Error
+"noDataError" = "Veri alınamadı. Lütfen internet bağlantınızı kontrol edin";
+"dataParseError" = "Veri alınamadı";

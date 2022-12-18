@@ -8,19 +8,26 @@
 import Foundation
 
 struct LocalizableConstant {
-    // Homepage action sheet
+    //MARK: -  Homepage action sheet
     static let menuActionSheetMessage = NSLocalizedString("menuActionSheetMessage", comment: "Please choise one item")
     static let menuActionSheetTitle = NSLocalizedString("menuActionSheetTitle", comment: "Filter")
+    static let menuButtonNameItem = "Name"
+    static let menuButtonRatingItem = "Rating"
+    static let menuButtonFavoriteItem = "Favorite"
     
-    // Searchbar
+    //MARK: -  Searchbar
     static let searchBarPlaceholder = NSLocalizedString("searchBarPlaceholder", comment: "Type something to search")
     
-    // View Controllers Title
-    static let homepageTitle = NSLocalizedString("homepageTitle", comment: "Populer Games")
+    //MARK: -  View Controllers Title
     static let favoriteListTitle = NSLocalizedString("favoriteListTitle", comment: "My Favorite Games")
+    static let noteListTitle = NSLocalizedString("noteListTitle", comment: "My Notes")
     
+    //MARK: - Core Data errors
     static let noDataError = NSLocalizedString("noDataError", comment: "Data not found. Plase check network connection")
     static let dataParseError = NSLocalizedString("dataParseError", comment: "Data not found")
+    
+    
+  
 }
 
 

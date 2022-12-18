@@ -39,21 +39,21 @@ final class HomepageViewController: UIViewController {
         let closeButton = UIAlertAction(title: "Cancel", style: .cancel)
         actionSheet.addAction(closeButton)
         
-        let nameAction = createUIAlertAction(title: GameSortingType.name)
-        actionSheet.addAction(nameAction)
-        
-        let ratingAction = createUIAlertAction(title: GameSortingType.rating)
+        let ratingAction = createUIAlertAction(menu: MenuButtonList.rating)
         actionSheet.addAction(ratingAction)
         
-        let updatedAction = createUIAlertAction(title: GameSortingType.updated)
-        actionSheet.addAction(updatedAction)
+        let nameAction = createUIAlertAction(menu: MenuButtonList.name)
+        actionSheet.addAction(nameAction)
+        
+        let favoriteAction = createUIAlertAction(menu: MenuButtonList.favorite)
+        actionSheet.addAction(favoriteAction)
         
         self.present(actionSheet, animated: true)
     }
     
-    private func createUIAlertAction(title: String) -> UIAlertAction {
-        let action = UIAlertAction(title: title, style: .default) { [weak self] _ in
-            self?.viewModel.getGameOrdering(with: title)
+    private func createUIAlertAction(menu: MenuButtonList) -> UIAlertAction {
+        let action = UIAlertAction(title: menu.title, style: .default) { [weak self] _ in
+            self?.viewModel.getGameOrdering(with: menu.searh)
             self?.dismiss(animated: true)
         }
         return action
@@ -124,7 +124,7 @@ extension HomepageViewController: UICollectionViewDelegate {
 extension HomepageViewController: HomepageViewControllerDelegate {
     func prepareComponents() {
         view.backgroundColor = .systemGray3
-        navigationItem.title = LocalizableConstant.homepageTitle
+        navigationItem.title = "RAWG"
         prepareCollectionView()
         prepareSearchController()
     }
