@@ -12,15 +12,14 @@ protocol DetailsViewModelDelegate {
     var id: Int! { get set }
     func viewDidLoad()
     func favoriteButtonClicked()
-    func sendNotificationForDataNotFound()
 }
 
 final class DetailsViewModel: DetailsViewModelDelegate {
     //MARK: - Property
     var view: DetailsViewControllerDelegate?
     var id: Int!
-    private var game: GameDetail?
-    private var gameIsFavorite: Bool = false
+     var game: GameDetail?
+     var gameIsFavorite: Bool = false
     
     //MARK: - Lifecycle
     func viewDidLoad() {
@@ -58,13 +57,15 @@ final class DetailsViewModel: DetailsViewModelDelegate {
     }
     
     //MARK: - Private Methods
-    private func getGameDetails(by id: Int){
+    func getGameDetails(by id: Int){
         view?.startProgressAnimating()
         NetworkManager.shared.getGameDetails(by: id) { [weak self] result in
             self?.view?.stopAnimating()
             switch result {
             case .failure(_):
-                self?.view?.dataNotFound()
+                self?.sendNotificationForDataNotFound()
+                self?.view?.popViewController()
+                
             case .success(let game):
                 self?.view?.prepareInterfaceComponent(game: game)
                 self?.game = game
@@ -72,7 +73,7 @@ final class DetailsViewModel: DetailsViewModelDelegate {
         }
     }
     
-    private func getGameIsFavorite(){
+    func getGameIsFavorite(){
         guard let _ = CoreDataFavoriGameClient.shared.getFavoriteGame(by: id.toString()) else {
             self.gameIsFavorite = false
             view?.changeButtonColor(false)
@@ -86,7 +87,7 @@ final class DetailsViewModel: DetailsViewModelDelegate {
         CommunicationBetweenModules.shared.post(name: CommunicationMessage.changedFavoriteStatus.rawValue)
     }
     
-    func sendNotificationForDataNotFound(){
+    private func sendNotificationForDataNotFound(){
         CommunicationBetweenModules.shared.post(name: CommunicationMessage.favoriteGameDetailDataNotFound.rawValue)
     }
 }
