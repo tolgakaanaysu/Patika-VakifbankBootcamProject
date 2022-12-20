@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "kingfisher",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onevcat/Kingfisher.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "3e091ee962391a2ddcae5b18e17bc625f9d88d6e"
+      }
+    },
+    {
+      "identity" : "progresshud",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/relatedcode/ProgressHUD.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "3ae24c855fff8fd40924a121ab315c125720d917"
+      }
+    }
+  ],
+  "version" : 2
+}
