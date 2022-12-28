@@ -17,21 +17,19 @@ protocol HomepageViewModelDelegate {
     func updateSearchResults(text: String?)
     func getGameID() -> Int?
     func getGameOrdering(with queryValue: String)
-    
-    
 }
 
 final class HomepageViewModel: HomepageViewModelDelegate {
     //MARK: - Property
     weak var view: HomepageViewControllerDelegate?
     private var id: Int?
-    private var mainGameList = [Game](){
-        didSet{
+    private var mainGameList = [Game]() {
+        didSet {
             filteredGameList = mainGameList
         }
     }
-    private var filteredGameList = [Game](){
-        didSet{
+    private var filteredGameList = [Game]() {
+        didSet {
             view?.collectionViewReloadData()
         }
     }
@@ -47,8 +45,7 @@ final class HomepageViewModel: HomepageViewModelDelegate {
         let queryItem = URLQueryItem(name: "ordering", value: queryValue)
         getAllGames(queryItems: [queryItem])
     }
-    
-    
+        
     //MARK: - CollectionViewDataSourceMethods
     func numberOfItemsInSection() -> Int {
         filteredGameList.count
@@ -68,11 +65,9 @@ final class HomepageViewModel: HomepageViewModelDelegate {
     func updateSearchResults(text: String?) {
         if text.isNilOrEmpty {
             filteredGameList = mainGameList
-        
         } else {
             filteredGameList = mainGameList.filter({ $0.name.uppercased().contains(text!.uppercased())})
         }
-        
     }
     
     func getGameID() -> Int? {
@@ -80,7 +75,7 @@ final class HomepageViewModel: HomepageViewModelDelegate {
     }
     
     //MARK: - Private Methods
-    func getAllGames(queryItems: [URLQueryItem] = []){
+    func getAllGames(queryItems: [URLQueryItem] = []) {
         view?.startProgressAnimating()
         NetworkManager.shared.getAllGames(queryItems: queryItems) {[weak self] result in
             guard let self else { return }
