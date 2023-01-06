@@ -23,6 +23,7 @@ final class HomepageViewModel: HomepageViewModelDelegate {
     //MARK: - Property
     weak var view: HomepageViewControllerDelegate?
     private var id: Int?
+    private lazy var networkMaganager: NetworkManagerProtocol = NetworkManager()
     private var mainGameList = [Game]() {
         didSet {
             filteredGameList = mainGameList
@@ -40,7 +41,7 @@ final class HomepageViewModel: HomepageViewModelDelegate {
         getAllGames()
     }
     
-    //MARK: - IBOActionMethods
+    //MARK: - IBActionMethods
     func getGameOrdering(with queryValue: String) {
         let queryItem = URLQueryItem(name: "ordering", value: queryValue)
         getAllGames(queryItems: [queryItem])
@@ -77,7 +78,7 @@ final class HomepageViewModel: HomepageViewModelDelegate {
     //MARK: - Private Methods
     func getAllGames(queryItems: [URLQueryItem] = []) {
         view?.startProgressAnimating()
-        NetworkManager.shared.getAllGames(queryItems: queryItems) {[weak self] result in
+        networkMaganager.getAllGames(queryItems: queryItems) {[weak self] result in
             guard let self else { return }
             self.view?.stopAnimating()
             switch result {
