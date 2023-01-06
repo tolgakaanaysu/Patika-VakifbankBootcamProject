@@ -23,6 +23,8 @@
 		78290922294D75DD00B9C551 /* NavigationPushable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78290921294D75DD00B9C551 /* NavigationPushable.swift */; };
 		78290925294D7C1900B9C551 /* AddNewNoteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78290924294D7C1900B9C551 /* AddNewNoteVC.swift */; };
 		78290929294D7C4D00B9C551 /* AddNewNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78290928294D7C4D00B9C551 /* AddNewNoteViewModel.swift */; };
+		78301D352967ABEC00BC285B /* NetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78301D342967ABEC00BC285B /* NetworkServiceError.swift */; };
+		78301D372967AC2900BC285B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78301D362967AC2900BC285B /* NetworkService.swift */; };
 		78A7FE6B2947F46100410242 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A7FE6A2947F46100410242 /* AppDelegate.swift */; };
 		78A7FE6D2947F46100410242 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A7FE6C2947F46100410242 /* SceneDelegate.swift */; };
 		78A7FE722947F46100410242 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78A7FE702947F46100410242 /* Main.storyboard */; };
@@ -87,6 +89,8 @@
 		78290921294D75DD00B9C551 /* NavigationPushable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPushable.swift; sourceTree = "<group>"; };
 		78290924294D7C1900B9C551 /* AddNewNoteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewNoteVC.swift; sourceTree = "<group>"; };
 		78290928294D7C4D00B9C551 /* AddNewNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewNoteViewModel.swift; sourceTree = "<group>"; };
+		78301D342967ABEC00BC285B /* NetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceError.swift; sourceTree = "<group>"; };
+		78301D362967AC2900BC285B /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		78A7FE672947F46100410242 /* BootcampFinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BootcampFinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78A7FE6A2947F46100410242 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78A7FE6C2947F46100410242 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -271,7 +275,7 @@
 			children = (
 				78A7FE9E2947F4BF00410242 /* App */,
 				78C1EB8B2948F3DF007BA40B /* Utility */,
-				78C1EB8329484367007BA40B /* Network */,
+				78C1EB8329484367007BA40B /* NetworkClient */,
 				78A7FEA02947F4F100410242 /* CoreData */,
 				78A7FE9D2947F4B000410242 /* Feature */,
 			);
@@ -387,13 +391,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		78C1EB8329484367007BA40B /* Network */ = {
+		78C1EB8329484367007BA40B /* NetworkClient */ = {
 			isa = PBXGroup;
 			children = (
+				78301D362967AC2900BC285B /* NetworkService.swift */,
 				78C1EB84294843A0007BA40B /* NetworkManager.swift */,
 				78C1EB8629484786007BA40B /* Endpoint.swift */,
+				78301D342967ABEC00BC285B /* NetworkServiceError.swift */,
 			);
-			path = Network;
+			path = NetworkClient;
 			sourceTree = "<group>";
 		};
 		78C1EB8B2948F3DF007BA40B /* Utility */ = {
@@ -584,8 +590,10 @@
 				78BCAD1D294808A200861AFF /* GameResponseModel.swift in Sources */,
 				78A7FE6B2947F46100410242 /* AppDelegate.swift in Sources */,
 				78C1EBA02949B3E7007BA40B /* CoreDataFavoriteGameClient.swift in Sources */,
+				78301D352967ABEC00BC285B /* NetworkServiceError.swift in Sources */,
 				78AC54BC294A725B00C0C14B /* FavoriteListVC.swift in Sources */,
 				78AC54B9294A6C8A00C0C14B /* FavoriteListCell.swift in Sources */,
+				78301D372967AC2900BC285B /* NetworkService.swift in Sources */,
 				78A7FE6D2947F46100410242 /* SceneDelegate.swift in Sources */,
 				78BCAD1E294808A200861AFF /* GameModel.swift in Sources */,
 				78198389294DF7860061E3E3 /* NewNote.swift in Sources */,
