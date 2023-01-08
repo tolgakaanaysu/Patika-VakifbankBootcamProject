@@ -43,8 +43,7 @@ final class HomepageViewModel: HomepageViewModelDelegate {
     
     //MARK: - IBActionMethods
     func getGameOrdering(with queryValue: String) {
-        let queryItem = URLQueryItem(name: "ordering", value: queryValue)
-        getAllGames(queryItems: [queryItem])
+        getAllGames(queryItems: [.ordering(queryValue)])
     }
         
     //MARK: - CollectionViewDataSourceMethods
@@ -76,7 +75,7 @@ final class HomepageViewModel: HomepageViewModelDelegate {
     }
     
     //MARK: - Private Methods
-    func getAllGames(queryItems: [URLQueryItem] = []) {
+    func getAllGames(queryItems: [QueryItem] = []) {
         view?.startProgressAnimating()
         networkMaganager.getAllGames(queryItems: queryItems) {[weak self] result in
             guard let self else { return }

@@ -9,7 +9,7 @@ import Foundation
 
 //MARK: - NetworkManagerProtocol
 protocol NetworkManagerProtocol {
-    func getAllGames(queryItems: [URLQueryItem], completion: @escaping(Result<[Game],Error>) -> Void)
+    func getAllGames(queryItems: [QueryItem], completion: @escaping(Result<[Game],Error>) -> Void)
     func getGameDetails(by id: Int, completion: @escaping(Result<GameDetail,Error>) -> Void)
 }
 
@@ -18,7 +18,7 @@ final class NetworkManager: NetworkManagerProtocol {
     private var networkService: NetworkService = URLSessionNetworkService()
     
     //MARK: - Methods
-    func getAllGames(queryItems: [URLQueryItem], completion: @escaping(Result<[Game],Error>) -> Void){
+    func getAllGames(queryItems: [QueryItem], completion: @escaping(Result<[Game],Error>) -> Void){
         let url = Endpoint.getAllGames(queryItems: queryItems).url
         networkService.taskForGETRequest(url: url, responseType: GameResponseModel.self) { result in
             switch result {

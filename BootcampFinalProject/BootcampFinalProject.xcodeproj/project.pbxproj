@@ -25,6 +25,8 @@
 		78290929294D7C4D00B9C551 /* AddNewNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78290928294D7C4D00B9C551 /* AddNewNoteViewModel.swift */; };
 		78301D352967ABEC00BC285B /* NetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78301D342967ABEC00BC285B /* NetworkServiceError.swift */; };
 		78301D372967AC2900BC285B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78301D362967AC2900BC285B /* NetworkService.swift */; };
+		78543183296B420C000F383A /* NavigationPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78543182296B420C000F383A /* NavigationPresentable.swift */; };
+		78543185296B4314000F383A /* QueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78543184296B4314000F383A /* QueryItem.swift */; };
 		78A7FE6B2947F46100410242 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A7FE6A2947F46100410242 /* AppDelegate.swift */; };
 		78A7FE6D2947F46100410242 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A7FE6C2947F46100410242 /* SceneDelegate.swift */; };
 		78A7FE722947F46100410242 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78A7FE702947F46100410242 /* Main.storyboard */; };
@@ -91,6 +93,8 @@
 		78290928294D7C4D00B9C551 /* AddNewNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewNoteViewModel.swift; sourceTree = "<group>"; };
 		78301D342967ABEC00BC285B /* NetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceError.swift; sourceTree = "<group>"; };
 		78301D362967AC2900BC285B /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		78543182296B420C000F383A /* NavigationPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPresentable.swift; sourceTree = "<group>"; };
+		78543184296B4314000F383A /* QueryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryItem.swift; sourceTree = "<group>"; };
 		78A7FE672947F46100410242 /* BootcampFinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BootcampFinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78A7FE6A2947F46100410242 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78A7FE6C2947F46100410242 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -176,6 +180,7 @@
 			children = (
 				78C1EB9B29499906007BA40B /* SeguePerformable.swift */,
 				78290921294D75DD00B9C551 /* NavigationPushable.swift */,
+				78543182296B420C000F383A /* NavigationPresentable.swift */,
 				78C1EB8C2948F3F7007BA40B /* Extensions.swift */,
 			);
 			path = Extensions;
@@ -398,6 +403,7 @@
 				78C1EB84294843A0007BA40B /* NetworkManager.swift */,
 				78C1EB8629484786007BA40B /* Endpoint.swift */,
 				78301D342967ABEC00BC285B /* NetworkServiceError.swift */,
+				78543184296B4314000F383A /* QueryItem.swift */,
 			);
 			path = NetworkClient;
 			sourceTree = "<group>";
@@ -590,6 +596,7 @@
 				78BCAD1D294808A200861AFF /* GameResponseModel.swift in Sources */,
 				78A7FE6B2947F46100410242 /* AppDelegate.swift in Sources */,
 				78C1EBA02949B3E7007BA40B /* CoreDataFavoriteGameClient.swift in Sources */,
+				78543185296B4314000F383A /* QueryItem.swift in Sources */,
 				78301D352967ABEC00BC285B /* NetworkServiceError.swift in Sources */,
 				78AC54BC294A725B00C0C14B /* FavoriteListVC.swift in Sources */,
 				78AC54B9294A6C8A00C0C14B /* FavoriteListCell.swift in Sources */,
@@ -604,6 +611,7 @@
 				7819B21B294C55FC00C85F37 /* Identifier.swift in Sources */,
 				78BCAD1C294808A200861AFF /* HomepageViewController.swift in Sources */,
 				78290925294D7C1900B9C551 /* AddNewNoteVC.swift in Sources */,
+				78543183296B420C000F383A /* NavigationPresentable.swift in Sources */,
 				7829090B294D2F5B00B9C551 /* CommunicationBetweenModules.swift in Sources */,
 				78290915294D548D00B9C551 /* NoteListCell.swift in Sources */,
 				78290918294D5AFF00B9C551 /* NoteListViewModel.swift in Sources */,
