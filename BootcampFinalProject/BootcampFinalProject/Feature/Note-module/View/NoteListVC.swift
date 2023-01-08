@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol NoteListVCDelegate: AnyObject, Alert, NavigationPresenable {
+protocol NoteListVCDelegate: AnyObject, Alert, NavigationPresentable {
     func prepareTableView()
     func tableViewReloadData()
     func preparePresent(note: Note?)

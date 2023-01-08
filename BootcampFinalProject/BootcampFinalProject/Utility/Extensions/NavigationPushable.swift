@@ -18,24 +18,7 @@ extension NavigationPushable where Self: UIViewController {
         navigationController?.pushViewController(viewController, animated: true)
     }
     
-    func popViewController(){
+    func popViewController() {
         navigationController?.popViewController(animated: true)
     }
-}
-
-protocol NavigationPresenable {
-    func present(with viewControllerID: String)
-    func dismiss()
-}
-
-extension NavigationPresenable where Self: UIViewController {
-    func present(with viewControllerID: String){
-        let viewController = storyboard!.instantiateViewController(identifier: viewControllerID)
-        present(viewController, animated: true)
-    }
-    
-    func dismiss(){
-        dismiss(animated: true)
-    }
-    
 }
