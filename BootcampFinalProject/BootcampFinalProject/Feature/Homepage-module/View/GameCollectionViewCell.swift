@@ -7,7 +7,7 @@
 
 import UIKit
 import Kingfisher
-class GameCollectionViewCell: UICollectionViewCell {
+final class GameCollectionViewCell: UICollectionViewCell {
     //MARK: - IBOutlet
     @IBOutlet private weak var backgroundImage: UIImageView!
     @IBOutlet private weak var ratingLabel: UILabel!

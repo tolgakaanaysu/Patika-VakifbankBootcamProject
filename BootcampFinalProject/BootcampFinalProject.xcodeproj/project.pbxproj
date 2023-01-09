@@ -27,6 +27,8 @@
 		78301D372967AC2900BC285B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78301D362967AC2900BC285B /* NetworkService.swift */; };
 		78543183296B420C000F383A /* NavigationPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78543182296B420C000F383A /* NavigationPresentable.swift */; };
 		78543185296B4314000F383A /* QueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78543184296B4314000F383A /* QueryItem.swift */; };
+		78543187296B5DB2000F383A /* CoreDataErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78543186296B5DB2000F383A /* CoreDataErrorMessage.swift */; };
+		78543189296B5DE3000F383A /* CoreDataSuccessMesage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78543188296B5DE3000F383A /* CoreDataSuccessMesage.swift */; };
 		78A7FE6B2947F46100410242 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A7FE6A2947F46100410242 /* AppDelegate.swift */; };
 		78A7FE6D2947F46100410242 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A7FE6C2947F46100410242 /* SceneDelegate.swift */; };
 		78A7FE722947F46100410242 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78A7FE702947F46100410242 /* Main.storyboard */; };
@@ -95,6 +97,8 @@
 		78301D362967AC2900BC285B /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		78543182296B420C000F383A /* NavigationPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPresentable.swift; sourceTree = "<group>"; };
 		78543184296B4314000F383A /* QueryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryItem.swift; sourceTree = "<group>"; };
+		78543186296B5DB2000F383A /* CoreDataErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataErrorMessage.swift; sourceTree = "<group>"; };
+		78543188296B5DE3000F383A /* CoreDataSuccessMesage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSuccessMesage.swift; sourceTree = "<group>"; };
 		78A7FE672947F46100410242 /* BootcampFinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BootcampFinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78A7FE6A2947F46100410242 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78A7FE6C2947F46100410242 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -326,6 +330,8 @@
 			children = (
 				78A7FE732947F46100410242 /* BootcampFinalProject.xcdatamodeld */,
 				78C1EB9D2949B216007BA40B /* CoreDataManager.swift */,
+				78543186296B5DB2000F383A /* CoreDataErrorMessage.swift */,
+				78543188296B5DE3000F383A /* CoreDataSuccessMesage.swift */,
 				78C1EB9F2949B3E7007BA40B /* CoreDataFavoriteGameClient.swift */,
 				78290919294D61F200B9C551 /* CoreDataNoteClient.swift */,
 			);
@@ -579,6 +585,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78543189296B5DE3000F383A /* CoreDataSuccessMesage.swift in Sources */,
 				78C1EB85294843A0007BA40B /* NetworkManager.swift in Sources */,
 				7819B1F7294C109B00C85F37 /* LocalizableConstants.swift in Sources */,
 				78BCAD212948201400861AFF /* GameCollectionViewCell.swift in Sources */,
@@ -612,6 +619,7 @@
 				78BCAD1C294808A200861AFF /* HomepageViewController.swift in Sources */,
 				78290925294D7C1900B9C551 /* AddNewNoteVC.swift in Sources */,
 				78543183296B420C000F383A /* NavigationPresentable.swift in Sources */,
+				78543187296B5DB2000F383A /* CoreDataErrorMessage.swift in Sources */,
 				7829090B294D2F5B00B9C551 /* CommunicationBetweenModules.swift in Sources */,
 				78290915294D548D00B9C551 /* NoteListCell.swift in Sources */,
 				78290918294D5AFF00B9C551 /* NoteListViewModel.swift in Sources */,
