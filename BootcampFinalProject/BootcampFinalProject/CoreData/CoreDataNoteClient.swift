@@ -10,13 +10,16 @@ import Foundation
 final class CoreDataNoteClient {
     //MARK: - Property
     static let shared: CoreDataNoteClient = CoreDataNoteClient()
-    private let entityName = "Note"
-    private let coredata = CoreDataManager.shared
-    private init(){}
+    private let coredata: CoreDataManager
+    
+    //MARK: - init
+    private init(){
+        self.coredata = CoreDataManager(entityName: "Note")
+    }
     
     //MARK: - METHODS
     func saveNote(newNote: NewNote, completion: @escaping(Result<CoreDataCustomSuccesMessage,CoreDataCustomError>) -> Void){
-        coredata.saveObject(entityName: self.entityName) { object in
+        coredata.saveObject() { object in
             object.setValue(newNote.text, forKey: "text")
             object.setValue(newNote.date, forKey: "date")
             object.setValue(newNote.title, forKey: "title")
@@ -34,11 +37,11 @@ final class CoreDataNoteClient {
     }
     
     func getNote(by id: String) -> Note? {
-        coredata.getObject(id: id, entityName: entityName)
+        coredata.getObject(by: id)
     }
     
     func getAllNote(comletion: @escaping(Result<[Note],CoreDataCustomError>) -> Void){
-        coredata.getAllObjects(entityName: entityName, responseType: Note.self) { result in
+        coredata.getAllObjects(responseType: Note.self) { result in
             comletion(result)
         }
     }

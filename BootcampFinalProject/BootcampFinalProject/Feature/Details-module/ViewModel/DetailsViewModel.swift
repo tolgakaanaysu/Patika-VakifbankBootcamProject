@@ -16,10 +16,12 @@ protocol DetailsViewModelDelegate {
 
 final class DetailsViewModel: DetailsViewModelDelegate {
     //MARK: - Property
+    private lazy var networkManager: NetworkManagerProtocol = NetworkManager()
     var view: DetailsViewControllerDelegate?
     var id: Int!
      var game: GameDetail?
      var gameIsFavorite: Bool = false
+    
     
     //MARK: - Lifecycle
     func viewDidLoad() {
@@ -59,7 +61,7 @@ final class DetailsViewModel: DetailsViewModelDelegate {
     //MARK: - Private Methods
     func getGameDetails(by id: Int){
         view?.startProgressAnimating()
-        NetworkManager.shared.getGameDetails(by: id) { [weak self] result in
+        networkManager.getGameDetails(by: id) { [weak self] result in
             self?.view?.stopAnimating()
             switch result {
             case .failure(_):

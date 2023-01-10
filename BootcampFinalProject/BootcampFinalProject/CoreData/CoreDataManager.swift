@@ -8,20 +8,21 @@
 import UIKit
 import CoreData
 
-final class CoreDataManager: NSObject{
+final class CoreDataManager: NSObject {
     //MARK: - Property
-    static let shared = CoreDataManager()
     private let managedContext: NSManagedObjectContext!
+    private let entityName: String
     
     //MARK: - init
-    private override init() {
+    init(entityName: String) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let persistentContainer = appDelegate.persistentContainer
         managedContext = persistentContainer.viewContext
+        self.entityName = entityName
     }
     
     //MARK: - Methods
-    func saveObject(entityName: String ,willSaveObject: (NSManagedObject) -> Void, completion: @escaping(Result<CoreDataCustomSuccesMessage, CoreDataCustomError>) -> Void) {
+    func saveObject(willSaveObject: (NSManagedObject) -> Void, completion: @escaping(Result<CoreDataCustomSuccesMessage, CoreDataCustomError>) -> Void) {
         guard let entity = NSEntityDescription.entity(forEntityName: entityName, in: managedContext) else { return }
         let managedObject = NSManagedObject(entity: entity, insertInto: managedContext)
         willSaveObject(managedObject)
@@ -46,7 +47,7 @@ final class CoreDataManager: NSObject{
         }
     }
     
-    func getAllObjects<modelType: NSManagedObject>(entityName: String, responseType: modelType.Type, completion: @escaping(Result<[modelType],CoreDataCustomError>) -> Void){
+    func getAllObjects<modelType: NSManagedObject>(responseType: modelType.Type, completion: @escaping(Result<[modelType],CoreDataCustomError>) -> Void){
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         
         do {
@@ -59,7 +60,7 @@ final class CoreDataManager: NSObject{
         }
     }
     
-    func getObject<ObjectType: NSManagedObject>(id: String, entityName: String) -> ObjectType? {
+    func getObject<ObjectType: NSManagedObject>(by id: String) -> ObjectType? {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "id = %@", id)
         fetchRequest.returnsObjectsAsFaults = false
@@ -73,46 +74,3 @@ final class CoreDataManager: NSObject{
         return nil
     }
 }
-
-//MARK: - Enums
-enum CoreDataCustomError {
-    case saveError
-    case loadError
-    case updateError
-    case deleteError
-}
-
-extension CoreDataCustomError: Error {
-    var message: String {
-        switch self {
-        case .loadError:
-            return "Failed to load"
-        case .saveError:
-            return "Failed to save"
-        case .updateError:
-            return "Failed to update"
-        case .deleteError:
-            return "Failed to delete"
-        }
-    }
-}
-
-enum CoreDataCustomSuccesMessage {
-    case saveSuccess
-    case updateSucces
-    case deleteSucces
-}
-
-extension CoreDataCustomSuccesMessage {
-    var message: String {
-        switch self {
-        case .saveSuccess:
-            return "Successfully saved"
-        case .updateSucces:
-            return "Successfully edited"
-        case .deleteSucces:
-            return "Successfully deleted"
-        }
-    }
-}
-

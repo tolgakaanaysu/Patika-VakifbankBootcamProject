@@ -17,7 +17,7 @@ final class HomepageViewController: UIViewController {
     @IBOutlet private weak var gameCollectionView: UICollectionView!
     
     //MARK: - Property
-    private lazy var viewModel: HomepageViewModelDelegate = HomepageViewModel()
+    private lazy var viewModel = HomepageViewModel()
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
